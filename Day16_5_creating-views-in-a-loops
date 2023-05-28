@@ -1,0 +1,34 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Alex Nguyen on 2023-04-27.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    let supes = ["Soldier Boy", "Homelander", "The Deep", "A-Train", "Queen Maeve", "Starlight", "Black Noir"]
+    @State private var selectedSupe = "Homelander"
+        
+    var body: some View {
+        // standalone example code
+        // Form {
+        //     ForEach(1..<100) { Text("Row of \($0)") }
+        // }
+        NavigationView {
+            Form {
+                Picker("Choose your Superhero", selection: $selectedSupe) {
+                    ForEach(supes, id: \.self) { Text($0) }
+                }.pickerStyle(.navigationLink)
+            }
+            .navigationTitle("The Seven")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

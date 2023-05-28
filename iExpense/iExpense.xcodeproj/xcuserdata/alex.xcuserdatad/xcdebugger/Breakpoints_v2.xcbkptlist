@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "63F8BE39-19EB-4972-9DB4-D60704330977"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FBECE344-FF9D-49FD-8043-CD8943952404"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "iExpense/AddView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "11"
+            endingLineNumber = "11"
+            landmarkName = "AddView"
+            landmarkType = "14">
+            <Locations>
+               <Location
+                  uuid = "FBECE344-FF9D-49FD-8043-CD8943952404 - 28662df6a69e5268"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "property wrapper backing initializer of iExpense.AddView.expenses : iExpense.Expenses"
+                  moduleName = "iExpense"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/PaulHudsonCourse/iExpense/iExpense/AddView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "28">
+               </Location>
+               <Location
+                  uuid = "FBECE344-FF9D-49FD-8043-CD8943952404 - 24fc0dcd7effb206"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iExpense.AddView.expenses.getter : iExpense.Expenses"
+                  moduleName = "iExpense"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/PaulHudsonCourse/iExpense/iExpense/AddView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "FBECE344-FF9D-49FD-8043-CD8943952404 - 3ae94bfc812ede12"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iExpense.AddView.expenses.setter : iExpense.Expenses"
+                  moduleName = "iExpense"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/PaulHudsonCourse/iExpense/iExpense/AddView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "FBECE344-FF9D-49FD-8043-CD8943952404 - 560188dcb6d07701"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iExpense.AddView.expenses.modify : iExpense.Expenses"
+                  moduleName = "iExpense"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/PaulHudsonCourse/iExpense/iExpense/AddView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "0">
+               </Location>
+               <Location
+                  uuid = "FBECE344-FF9D-49FD-8043-CD8943952404 - c8670a9ce0642712"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iExpense.AddView.expenses.modify : iExpense.Expenses with unmangled suffix &quot;.resume.0&quot;"
+                  moduleName = "iExpense"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/PaulHudsonCourse/iExpense/iExpense/AddView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  uuid = "FBECE344-FF9D-49FD-8043-CD8943952404 - ceba8baec193fece"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "iExpense.AddView.$expenses.getter : SwiftUI.ObservedObject&lt;iExpense.Expenses&gt;.Wrapper"
+                  moduleName = "iExpense"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/PaulHudsonCourse/iExpense/iExpense/AddView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "11"
+                  endingLineNumber = "11"
+                  offsetFromSymbolStart = "92">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

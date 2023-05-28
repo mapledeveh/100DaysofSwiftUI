@@ -1,0 +1,78 @@
+//
+//  ContentView.swift
+//  ViewsAndModifiers
+//
+//  Created by Alex Nguyen on 2023-05-04.
+//
+
+import SwiftUI
+
+// this below is a custom modifier
+struct Title: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.largeTitle)
+            .padding()
+            .foregroundColor(.white)
+            .background(.green)
+            .clipShape(Capsule())
+    }
+}
+
+// wrap the modifier inside an extension, easy to use
+extension View {
+    func titleStyle() -> some View {
+        modifier(Title())
+    }
+}
+
+// another example
+struct Watermark: ViewModifier {
+    var text: String
+    
+    func body(content: Content) -> some View {
+        ZStack(alignment: .bottomTrailing) {
+            content
+            
+            Text(text)
+                .font(.caption)
+                .padding(5)
+                .foregroundColor(.white)
+                .background(.black)
+        }
+    }
+}
+
+extension View {
+    func watermark(_ text: String) -> some View {
+        modifier(Watermark(text: text))
+    }
+}
+
+struct ContentView: View {
+    
+    var body: some View {
+        VStack {
+            Spacer()
+            
+            Text("Hey, yo! What's up?")
+                .modifier(Title())
+            
+            Text("Yo yo, Mo Mo!")
+                .titleStyle()
+            
+            Spacer()
+            
+            LinearGradient(gradient: Gradient(colors: [.red, .yellow, .blue]), startPoint: .leading, endPoint: .trailing)
+                .frame(width: 250, height: 250)
+                .watermark("Made by Alex with Milly's 💩")
+            Spacer()
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

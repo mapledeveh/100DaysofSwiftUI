@@ -1,0 +1,47 @@
+//
+//  ContentView.swift
+//  Moonshot
+//
+//  Created by Alex Nguyen on 2023-05-22.
+//
+
+import SwiftUI
+
+struct User: Codable {
+    let name: String
+    let address: Address
+}
+
+struct Address: Codable {
+    let street: String
+    let city: String
+}
+
+struct ContentView: View {
+    var body: some View {
+        Button("Declassify") {
+            let input = """
+            {
+                "name": "Alex Nguyen",
+                "address": {
+                    "street": "69 Alexander Blvd",
+                    "city": "Toronto"
+                }
+            }
+            """
+            
+            let data = Data(input.utf8)
+            
+            if let user = try? JSONDecoder().decode(User.self, from: data) {
+                print(user.address.street)
+            }
+        }
+        .buttonStyle(.borderedProminent)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

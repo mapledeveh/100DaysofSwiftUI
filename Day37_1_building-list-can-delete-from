@@ -1,0 +1,75 @@
+//
+//  ContentView.swift
+//  iExpense
+//
+//  Created by Alex Nguyen on 2023-05-19.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @StateObject var expenses = Expenses()
+    
+    func removeItems(at offsets: IndexSet) {
+        expenses.items.remove(atOffsets: offsets)
+    }
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(expenses.items, id: \.name) { item in
+                    Text(item.name)
+                }
+                .onDelete(perform: removeItems)
+            }
+            .navigationTitle("iExpense")
+            .toolbar {
+                Button {
+                    let expense = ExpenseItem(name: "Test", type: "Waste of money", amount: 50.0)
+                    expenses.items.append(expense)
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+
+//
+//  ExpenseItem.swift
+//  iExpense
+//
+//  Created by Alex Nguyen on 2023-05-20.
+//
+
+import Foundation
+
+struct ExpenseItem {
+    let name: String
+    let type: String
+    let amount: Double
+}
+
+
+
+
+//
+//  Expense.swift
+//  iExpense
+//
+//  Created by Alex Nguyen on 2023-05-20.
+//
+
+import Foundation
+
+class Expenses: ObservableObject {
+    @Published var items = [ExpenseItem]()
+}

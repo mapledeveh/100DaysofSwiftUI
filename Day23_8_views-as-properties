@@ -1,0 +1,53 @@
+//
+//  ContentView.swift
+//  ViewsAndModifiers
+//
+//  Created by Alex Nguyen on 2023-05-04.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    /*
+    let moto1 = Text("Mother of Dragons")
+    let moto2 = Text("Breaker of Chains")
+    
+    var body: some View {
+        VStack {
+            moto1
+                .foregroundColor(.green)
+            moto2
+                .foregroundColor(.orange)
+        }
+    }
+    */
+    
+    var moto1: some View {
+        Text("Mother of Dragons")
+    }
+    /*
+    var names: some View {
+//        VStack {
+        Group {     // group is layout agnostic
+            Text("The Unburnt")
+            Text("Queen of the Andals")
+        }
+    }
+    */
+    @ViewBuilder var names: some View {
+        Text("The Unburnt")
+        Text("Queen of the Andals")
+    }
+    
+    var body: some View {
+        HStack {
+            names
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

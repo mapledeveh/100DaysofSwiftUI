@@ -1,0 +1,43 @@
+//
+//  ContentView.swift
+//  GuessTheFlag
+//
+//  Created by Alex Nguyen on 2023-05-02.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        ZStack {
+            VStack(spacing: 0) {
+                Color.red
+                Color.green
+            }
+            
+            Text("Hey, yo!")
+//                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary)
+                .padding(50)
+                .background(.ultraThinMaterial)
+            /*
+            Color.yellow
+            Color.secondary
+             */
+//            Color.primary
+            /*
+            Color.red
+//                .frame(width: 200, height: 200)
+                .frame(minWidth: 200, maxWidth: .infinity, maxHeight: 200)
+            Text("Hey, yo!")
+             */
+        }
+        .ignoresSafeArea()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

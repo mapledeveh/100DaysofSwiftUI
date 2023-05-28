@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='Day1'/>
+        <page name='Day2_arrays'/>
+        <page name='Day2_dictionaries'/>
+        <page name='Day2_sets'/>
+        <page name='Day2_enum'/>
+        <page name='Day2_type-anotation'/>
+        <page name='Day2_summary-complex-data'/>
+        <page name='Day2_checkpoint'/>
+        <page name='Day3_conditions'/>
+        <page name='Day3_multiple-conditions'/>
+        <page name='Day3_switch-statement'/>
+        <page name='Day3_tertinary-operator'/>
+        <page name='Day4_for-loops'/>
+        <page name='Day4_while-loops'/>
+        <page name='Day4_break-continue'/>
+        <page name='Day4_summary-conditions-loops'/>
+        <page name='Day4_checkpoint'/>
+        <page name='Day5_functions'/>
+        <page name='Day5_functions-return-values'/>
+        <page name='Day5_return-multiple-values'/>
+        <page name='Day5_parameter-labels'/>
+        <page name='Day5_default-parameter-values'/>
+        <page name='Day5_errors'/>
+        <page name='Day5_checkpoint4'/>
+        <page name='Day5_summary'/>
+        <page name='Day6_closures-shorthand-syntax'/>
+        <page name='Day6_shorthand-syntax'/>
+        <page name='Day7_function-as-parameter'/>
+        <page name='Day7_summary'/>
+        <page name='Day7_checkpoint5'/>
+        <page name='Day8_structs'/>
+        <page name='Day8_computed-values'/>
+        <page name='Day8_action-when-property-changes'/>
+        <page name='Day8_custom-initializer'/>
+        <page name='Day9_access-control'/>
+        <page name='Day9_static-properties-methods'/>
+        <page name='Day9_lazy'/>
+        <page name='Day9_summary'/>
+        <page name='Day9_checkpoint6'/>
+        <page name='Day10_classes'/>
+        <page name='Day10_inheritance'/>
+        <page name='Day10_class-initializers'/>
+        <page name='Day10_copy-classes'/>
+        <page name='Day10_class-deinitializers'/>
+        <page name='Day10_variables-inside-classes'/>
+        <page name='Day10_summary'/>
+        <page name='Day10_checkpoint7'/>
+        <page name='Day11_protocols'/>
+        <page name='Day11_opaque-return-types'/>
+        <page name='Day11_extensions'/>
+        <page name='Day11_protocol-extensions'/>
+        <page name='Day11_more-of-protocol-extensions'/>
+        <page name='Day11_summary'/>
+        <page name='Day11_checkpoint8'/>
+        <page name='Day12_optionals'/>
+        <page name='Day12_unwrap-optionals-guard'/>
+        <page name='Day12_unwrap-optionals-nil-coalescing'/>
+        <page name='Day12_optional-chaining'/>
+        <page name='Day12_function-failure-w-optionals'/>
+        <page name='Day12_summary'/>
+        <page name='Day12_typecasting'/>
+        <page name='Day12_checkpoint9'/>
+    </pages>
+</playground>

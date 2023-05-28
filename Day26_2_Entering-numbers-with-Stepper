@@ -1,0 +1,25 @@
+//
+//  ContentView.swift
+//  BetterRest
+//
+//  Created by Alex Nguyen on 2023-05-07.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var sleepHours = 8.0
+    
+    var body: some View {
+        VStack {
+            Stepper("\(sleepHours.formatted())", value: $sleepHours, in: 4...12, step: 0.25)
+        }
+        .padding()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

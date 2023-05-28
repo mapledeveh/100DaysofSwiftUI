@@ -1,0 +1,28 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Alex Nguyen on 2023-04-27.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    Text("Hey, yo! What's up?")
+                }
+            }
+            .navigationTitle("SwiftUI")
+//            .navigationBarTitleDisplayMode(.inline)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

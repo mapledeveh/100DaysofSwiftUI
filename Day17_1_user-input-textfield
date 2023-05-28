@@ -1,0 +1,38 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Alex Nguyen on 2023-04-27.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var chequeAmount = 0.0
+    @State private var numberOfPeople = 2
+    @State private var tipPercentage = 20
+    
+    let tipPercentages = [0, 5, 10, 15, 20]
+    
+    var body: some View {
+        Form {
+            Section {
+                TextField("Amount", value: $chequeAmount, format: .currency(code: Locale.current.currency?.identifier ?? "CAD"))
+                    .keyboardType(.decimalPad)
+            }
+            
+            Section {
+                Text(chequeAmount, format: .currency(code: Locale.current.currency?.identifier ?? "VND"))
+            }
+            Section {
+                Text((Locale.current.currency?.identifier)!)
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
