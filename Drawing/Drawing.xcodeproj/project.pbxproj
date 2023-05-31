@@ -11,6 +11,7 @@
 		FA2FFEED2A22F70E00D3A000 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2FFEEC2A22F70E00D3A000 /* ContentView.swift */; };
 		FA2FFEEF2A22F70F00D3A000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA2FFEEE2A22F70F00D3A000 /* Assets.xcassets */; };
 		FA2FFEF22A22F70F00D3A000 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA2FFEF12A22F70F00D3A000 /* Preview Assets.xcassets */; };
+		FA9DB78D2A27194000F0D7EB /* ColorCyclingRectangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9DB78C2A27194000F0D7EB /* ColorCyclingRectangleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		FA2FFEEC2A22F70E00D3A000 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA2FFEEE2A22F70F00D3A000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA2FFEF12A22F70F00D3A000 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FA9DB78C2A27194000F0D7EB /* ColorCyclingRectangleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCyclingRectangleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				FA2FFEEA2A22F70E00D3A000 /* DrawingApp.swift */,
 				FA2FFEEC2A22F70E00D3A000 /* ContentView.swift */,
+				FA9DB78C2A27194000F0D7EB /* ColorCyclingRectangleView.swift */,
 				FA2FFEEE2A22F70F00D3A000 /* Assets.xcassets */,
 				FA2FFEF02A22F70F00D3A000 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA2FFEED2A22F70E00D3A000 /* ContentView.swift in Sources */,
+				FA9DB78D2A27194000F0D7EB /* ColorCyclingRectangleView.swift in Sources */,
 				FA2FFEEB2A22F70E00D3A000 /* DrawingApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
