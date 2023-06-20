@@ -11,6 +11,7 @@
 		FA357F5E2A3AC641000E48BE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA357F5D2A3AC641000E48BE /* ContentView.swift */; };
 		FA357F602A3AC641000E48BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA357F5F2A3AC641000E48BE /* Assets.xcassets */; };
 		FA357F632A3AC641000E48BE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA357F622A3AC641000E48BE /* Preview Assets.xcassets */; };
+		FAD312722A4161D700D5A9D8 /* SavedCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD312712A4161D700D5A9D8 /* SavedCode.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		FA357F5D2A3AC641000E48BE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		FA357F5F2A3AC641000E48BE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA357F622A3AC641000E48BE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		FAD312712A4161D700D5A9D8 /* SavedCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				FA357F5B2A3AC641000E48BE /* CupcakeCornerApp.swift */,
 				FA357F5D2A3AC641000E48BE /* ContentView.swift */,
+				FAD312712A4161D700D5A9D8 /* SavedCode.swift */,
 				FA357F5F2A3AC641000E48BE /* Assets.xcassets */,
 				FA357F612A3AC641000E48BE /* Preview Content */,
 			);
@@ -137,6 +140,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD312722A4161D700D5A9D8 /* SavedCode.swift in Sources */,
 				FA357F5E2A3AC641000E48BE /* ContentView.swift in Sources */,
 				FA357F5C2A3AC641000E48BE /* CupcakeCornerApp.swift in Sources */,
 			);
