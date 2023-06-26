@@ -50,3 +50,58 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+
+//
+//  Order.swift
+//  CupcakeCorner
+//
+//  Created by Alex Nguyen on 2023-06-26.
+//
+
+import SwiftUI
+
+class Order: ObservableObject {
+    static let types = ["Vanilla", "Chocolate", "Strawberry", "Rainbow"]
+    
+    @Published var type = 0
+    @Published var quantity = 3
+    
+    @Published var specialRequestEnabled = false {
+        didSet {
+            if specialRequestEnabled == false {
+                extraFrosting = false
+                addSprinkles = false
+            }
+        }
+    }
+    @Published var extraFrosting = false
+    @Published var addSprinkles = false
+}
+
+
+
+
+
+//
+//  AddressView.swift
+//  CupcakeCorner
+//
+//  Created by Alex Nguyen on 2023-06-26.
+//
+
+import SwiftUI
+
+struct AddressView: View {
+    @ObservedObject var order: Order
+    var body: some View {
+        Text("Hello, World!"
+    }
+}
+
+struct AddressView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddressView(order: Order())
+    }
+}
