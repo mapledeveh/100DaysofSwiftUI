@@ -1,0 +1,110 @@
+//
+//  ContentView.swift
+//  Bookworm
+//
+//  Created by Alex Nguyen on 2023-06-28.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var students: FetchedResults<Student>
+    
+    var body: some View {
+        VStack {
+            List(students) { student in
+                Text(student.name ?? "Unknown")
+            }
+            
+            Button("Add") {
+                let firstName = ["John", "Jane", "Joe", "Michael", "James"]
+                let lastName = ["Doe", "Smith", "Johnson", "Williams", "Jones"]
+                
+                let chosenFirstName = firstName.randomElement()!
+                let chosenLastName = lastName.randomElement()!
+                
+                let student = Student(context: moc)
+                student.id = UUID()
+                student.name = "\(chosenFirstName) \(chosenLastName)"
+                
+                try? moc.save()
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+
+
+
+//
+//  BookwormApp.swift
+//  Bookworm
+//
+//  Created by Alex Nguyen on 2023-06-28.
+//
+
+import SwiftUI
+
+@main
+struct BookwormApp: App {
+    @StateObject private var dataController = DataController()
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
+        }
+    }
+}
+
+
+
+//
+//  DataController.swift
+//  Bookworm
+//
+//  Created by Alex Nguyen on 2023-06-28.
+//
+
+import Foundation
+import CoreData
+
+class DataController: ObservableObject {
+    let container = NSPersistentContainer(name: "Bookworm")
+    
+    init() {
+        container.loadPersistentStores { description, error in
+            if let error = error {
+                print("Core Data failed to load: \(error.localizedDescription)")
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+//
+//  Bookworm.xcdatamodeld
+//  Bookworm
+//
+//  Created by Alex Nguyen on 2023-06-28.
+//
+// Entities:
+// - Student
+//   - Attributes:
+//     - id: UUID
+//     - name: String
+
+

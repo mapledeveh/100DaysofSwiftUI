@@ -1,0 +1,26 @@
+//
+//  ContentView.swift
+//  Bookworm
+//
+//  Created by Alex Nguyen on 2023-06-28.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @AppStorage("notes") private var notes = ""
+    
+    var body: some View {
+        NavigationView {
+            TextEditor(text: $notes)
+                .padding()
+                .navigationTitle("Notes")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
