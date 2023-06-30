@@ -32,11 +32,29 @@ struct DetailView: View {
             
             Text(book.author ?? "Unknown Author")
                 .font(.title)
+                .foregroundColor(.primary)
+            
+            Text((book.dateadded ?? Date.now).formatted(date: .abbreviated, time: .omitted))
+                .font(.caption)
                 .foregroundColor(.secondary)
             
-            Text(book.review ?? "No review")
-                .padding()
-            
+            ZStack(alignment: .topLeading) {
+                Image(systemName: "quote.opening")
+                    .foregroundColor(.secondary)
+                ZStack(alignment: .bottomTrailing) {
+                    Image(systemName: "quote.closing")
+                        .foregroundColor(.secondary)
+                    
+                    Text(book.review ?? "No review")
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                }
+            }
+            .background(.thinMaterial)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            //            .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 15))
+            .padding()
+
             RatingView(rating: .constant(Int(book.rating)))
                 .font(.largeTitle)
         }

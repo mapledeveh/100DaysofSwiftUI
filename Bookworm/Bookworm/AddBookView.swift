@@ -14,10 +14,12 @@ struct AddBookView: View {
     @State private var title = ""
     @State private var author = ""
     @State private var rating = 2
-    @State private var genre = ""
+    @State private var genre = "Thriller"
     @State private var review = ""
     
     let genres = ["Fantasy", "Horror", "Kids", "Mystery", "Poetry", "Romance", "Thriller"]
+    
+    @State private var showingEmptyAlert = false
     
     var body: some View {
         NavigationView {
@@ -35,27 +37,41 @@ struct AddBookView: View {
                 
                 Section {
                     TextEditor(text: $review)
-                    RatingView(rating: $rating)
+                    HStack {
+                        EmojiRating(rating: Int16(rating))
+                        RatingView(rating: $rating)
+                    }
                 } header: {
                     Text("Write a review")
                 }
                 
                 Section {
                     Button("Save") {
-                        let newBook = Book(context: moc)
-                        newBook.id = UUID()
-                        newBook.title = title
-                        newBook.author = author
-                        newBook.genre = genre
-                        newBook.rating = Int16(rating)
-                        newBook.review = review
-                        
-                        try? moc.save()
-                        dismiss()
+                        if title.trimmingCharacters(in: .whitespacesAndNewlines) == "" || author.trimmingCharacters(in: .whitespacesAndNewlines) == "" {
+                            showingEmptyAlert = true
+                        } else {
+                            let newBook = Book(context: moc)
+                            newBook.id = UUID()
+                            newBook.title = title.trimmingCharacters(in: .whitespacesAndNewlines)
+                            newBook.author = author.trimmingCharacters(in: .whitespacesAndNewlines)
+                            newBook.genre = genre
+                            newBook.rating = Int16(rating)
+                            newBook.review = review
+                            newBook.dateadded = Date.now
+                            
+                            try? moc.save()
+                            dismiss()
+                        }
                     }
+                    .disabled(title.isEmpty || author.isEmpty)
                 }
             }
             .navigationTitle("Add Book")
+            .alert("Warning!", isPresented: $showingEmptyAlert) {
+                Button("OK") {}
+            } message: {
+                Text("Can't be empty!")
+            }
         }
     }
 }
