@@ -25,20 +25,28 @@ struct ContentView: View {
                         DetailView(book: book)
                     } label: {
                         HStack {
-                            EmojiRating(rating: book.rating)
-                                .font(.largeTitle)
+                            VStack {
+                                EmojiRating(rating: book.rating)
+                                    .font(.largeTitle)
+                                
+                                RatingView(rating: .constant(Int(book.rating)), spaceBetween: 0)
+                                    .font(.system(size: 7))
+                            }
                             
                             VStack(alignment: .leading) {
                                 Text(book.title ?? "Unknown Title")
                                     .font(.headline)
+                                    .foregroundColor(book.rating == 1 ? .gray : .primary)
                                 
                                 Text(book.author ?? "Unknown Author")
                                     .foregroundColor(.secondary)
+                                    .opacity(0.7)
                             }
                         }
                     }
                 }
                 .onDelete(perform: deleteBooks)
+//                .listRowInsets(EdgeInsets())
             }
             .navigationTitle("Bookworm")
             .toolbar {

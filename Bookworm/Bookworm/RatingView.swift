@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RatingView: View {
     @Binding var rating: Int
+    var spaceBetween = 10.0
     
     var label = ""
     var maximumRating = 5
@@ -20,7 +21,7 @@ struct RatingView: View {
     var onColour = Color.yellow
     
     var body: some View {
-        HStack {
+        HStack(spacing: spaceBetween) {
             if label.isEmpty == false {
                 Text(label)
             }
