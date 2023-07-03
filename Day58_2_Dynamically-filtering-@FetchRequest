@@ -1,0 +1,145 @@
+//
+//  ContentView.swift
+//  CoreDataProject
+//
+//  Created by Alex Nguyen on 2023-07-01.
+//
+
+import SwiftUI
+import CoreData
+
+struct ContentView: View {
+    @Environment(\.managedObjectContext) var moc
+    @State private var lastNameFilter = "A"
+    
+    var body: some View {
+        VStack {
+//            FilteredList(filter: lastNameFilter)
+            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+                Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
+            }
+            
+            HStack {
+                Button("Add Examples") {
+                    let taylor = Singer(context: moc)
+                    taylor.firstName = "Taylor"
+                    taylor.lastName = "Swift"
+                    
+                    let ed = Singer(context: moc)
+                    ed.firstName = "Ed"
+                    ed.lastName = "Sheeran"
+                    
+                    let adele = Singer(context: moc)
+                    adele.firstName = "Adele"
+                    adele.lastName = "Adkins"
+                    
+                    try? moc.save()
+                }
+                .buttonStyle(.borderedProminent)
+                
+                Button("Show A") {
+                    lastNameFilter = "A"
+                }
+                .buttonStyle(.bordered)
+                
+                Button("Show S") {
+                    lastNameFilter = "S"
+                }
+                .buttonStyle(.bordered)
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+
+
+
+//
+//  FilteredList.swift
+//  CoreDataProject
+//
+//  Created by Alex Nguyen on 2023-07-03.
+//
+
+import SwiftUI
+import CoreData
+
+//struct FilteredList: View {
+//    @FetchRequest var fetchRequest: FetchedResults<Singer>
+struct FilteredList<T: NSManagedObject, Content: View>: View {
+    @FetchRequest var fetchRequest: FetchedResults<T>
+    let content: (T) -> Content
+    
+    var body: some View {
+//        List(fetchRequest, id: \.self) { singer in
+//            Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
+//        }
+        List(fetchRequest, id: \.self) { item in
+            self.content(item)
+        }
+    }
+    
+//    init(filter: String) {
+//        _fetchRequest = FetchRequest(sortDescriptors: [], predicate: NSPredicate(format: "lastName BEGINSWITH %@", filter))
+//    }
+    init(filterKey: String, filterValue: String, @ViewBuilder content: @escaping (T) -> Content) {
+        _fetchRequest = FetchRequest<T>(sortDescriptors: [], predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue))
+        self.content = content
+    }
+}
+
+
+
+
+
+//
+//  Singer+CoreDataProperties.swift
+//  CoreDataProject
+//
+//  Created by Alex Nguyen on 2023-07-03.
+//
+//
+
+import Foundation
+import CoreData
+
+
+extension Singer {
+
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Singer> {
+        return NSFetchRequest<Singer>(entityName: "Singer")
+    }
+
+    @NSManaged public var firstName: String?
+    @NSManaged public var lastName: String?
+    
+    var wrappedFirstName: String {
+        firstName ?? "Unknown"
+    }
+    
+    var wrappedLastName: String {
+        lastName ?? "Unknown"
+    }
+
+}
+
+extension Singer : Identifiable {
+
+}
+
+
+
+
+
+// CoreDataProject.xcdatamodeld
+
+// Singer:
+//   - firstName
+//   - lastName
