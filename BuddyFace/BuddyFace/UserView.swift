@@ -9,10 +9,6 @@ import SwiftUI
 
 struct UserView: View {
     var user: User
-    func registeredDate(_ date: String) -> Date {
-        let regDate = ISO8601DateFormatter().date(from: date)
-        return regDate ?? Date.now
-    }
     
     var body: some View {
         List {
@@ -33,7 +29,7 @@ struct UserView: View {
             
             Text("About: \(user.about)")
             
-            Text("Friends: \(combineArrayText(user.friends))")
+            Text("Friends: \(combineFriendText(user.friends))")
             
             Text("Tags: \(user.tags.joined(separator: ", "))")
         }
@@ -41,7 +37,12 @@ struct UserView: View {
         .navigationBarTitleDisplayMode(.inline)
     }
     
-    func combineArrayText(_ array: [Friend]) -> String {
+    func registeredDate(_ date: String) -> Date {
+        let regDate = ISO8601DateFormatter().date(from: date)
+        return regDate ?? Date.now
+    }
+    
+    func combineFriendText(_ array: [Friend]) -> String {
         var combinedText = ""
         
         for i in 0..<array.count {
