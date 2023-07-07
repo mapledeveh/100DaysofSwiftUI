@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct UserView: View {
-    var user: User
+    var user: CachedUser
     
     var body: some View {
         List {
             VStack(alignment: .leading) {
-                Text(user.name)
+                Text(user.wrappedName)
                     .font(.largeTitle)
                 
                 Text("\(user.age)")
@@ -21,35 +21,25 @@ struct UserView: View {
             }
             
             VStack(alignment: .leading) {
-                Text("Email: \(user.email)")
-                Text("Address: \(user.address)")
-                Text("Company: \(user.company)")
-                Text("Registered Date: \(registeredDate(user.registered).formatted(date: .abbreviated, time: .omitted))")
+                Text("Email: \(user.wrappedEmail)")
+                Text("Address: \(user.wrappedAddress)")
+                Text("Company: \(user.wrappedCompany)")
+                Text("Registered Date: \(user.wrappedRegistered.formatted(date: .abbreviated, time: .omitted))")
             }
             
-            Text("About: \(user.about)")
+            Text("About: \(user.wrappedAbout)")
             
-            Text("Friends: \(combineFriendText(user.friends))")
+            Text("Friends: \(user.wrappedFriends)")
             
-            Text("Tags: \(user.tags.joined(separator: ", "))")
+            Text("Tags: \(user.wrappedTags)")
         }
-        .navigationTitle("\(user.name)")
+        .navigationTitle("\(user.wrappedName)")
         .navigationBarTitleDisplayMode(.inline)
     }
     
     func registeredDate(_ date: String) -> Date {
         let regDate = ISO8601DateFormatter().date(from: date)
         return regDate ?? Date.now
-    }
-    
-    func combineFriendText(_ array: [Friend]) -> String {
-        var combinedText = ""
-        
-        for i in 0..<array.count {
-            combinedText += array[i].name + (i == array.count - 1 ? "" : ", ")
-        }
-        
-        return combinedText
     }
 }
 

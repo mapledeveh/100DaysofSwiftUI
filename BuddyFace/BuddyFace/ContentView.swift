@@ -6,20 +6,23 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
-    @State private var users = [User]()
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
     
-    let columns = [ GridItem(.adaptive(minimum: .infinity)) ]
+    @State private var users = [User]()
+    @State private var switchView = false
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(users, id: \.id) { user in
+                ForEach(cachedUsers, id: \.id) { user in
                     NavigationLink {
                         UserView(user: user)
                     } label: {
-                        Text(user.name)
+                        Text(user.wrappedName)
                             .foregroundColor(.primary)
                     }
                 }
@@ -28,6 +31,7 @@ struct ContentView: View {
         }
         .task {
             await loadData()
+            
         }
     }
     
@@ -40,11 +44,50 @@ struct ContentView: View {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             
-            if let decodedResponse = try? JSONDecoder().decode([User].self, from: data) {
-                users = decodedResponse
-            }
+            let decoder = JSONDecoder()
+            
+            let decodedResponse = try decoder.decode([User].self, from: data)
+            users = decodedResponse
+            
+//            decoder.userInfo[.context] = moc
+//            let decodedResponse = try decoder.decode([CachedUser].self, from: data)
+//            decodedResponse.forEach { person in
+//                print(person.tags)
+//            }
+//
+//            if moc.hasChanges {
+//                try moc.save()
+//            }
+            
         } catch {
-            print("Invalid Data")
+            print("\(error.localizedDescription)")
+        }
+        
+        await MainActor.run {
+            users.forEach { user in
+                let cachedUser = CachedUser(context: moc)
+                cachedUser.id = user.id
+                cachedUser.name = user.name
+                cachedUser.age = Int16(user.age)
+                cachedUser.company = user.company
+                cachedUser.email = user.email
+                cachedUser.address = user.address
+                cachedUser.about = user.about
+                cachedUser.isActive = user.isActive
+                cachedUser.registered = ISO8601DateFormatter().date(from: user.registered)
+                cachedUser.tags = user.tags.joined(separator: ", ")
+                user.friends.forEach { friend in
+                    let cachedFriend = CachedFriend(context: moc)
+                    cachedFriend.id = friend.id
+                    cachedFriend.name = friend.name
+                    
+                    cachedUser.addToFriends(cachedFriend)
+                }
+            }
+
+//            if moc.hasChanges {
+//                try? moc.save()
+//            }
         }
     }
 }
