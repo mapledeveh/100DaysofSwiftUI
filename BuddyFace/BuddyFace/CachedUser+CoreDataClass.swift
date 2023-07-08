@@ -12,11 +12,11 @@ import CoreData
 @objc(CachedUser)
 
 public class CachedUser: NSManagedObject {
-    
+
 }
 //public class CachedUser: NSManagedObject, Codable {
 //    enum CodingKeys: CodingKey {
-//        case id, name, age, company, email, address, about, isActive, registered
+//        case id, name, age, company, email, address, tags, about, isActive, registered
 //    }
 //
 //
@@ -30,7 +30,7 @@ public class CachedUser: NSManagedObject {
 //        try container.encode(email, forKey: .email)
 //        try container.encode(address, forKey: .address)
 //        try container.encode(about, forKey: .about)
-////        try container.encode(tags, forKey: .tags)
+//        try container.encode(tags, forKey: .tags)
 //        try container.encode(isActive, forKey: .isActive)
 //        try container.encode(registered, forKey: .registered)
 //    }
@@ -51,9 +51,9 @@ public class CachedUser: NSManagedObject {
 //        email = try container.decode(String.self, forKey: .email)
 //        address = try container.decode(String.self, forKey: .address)
 //        about = try container.decode(String.self, forKey: .about)
-////        tags = try container.decode(String.self, forKey: .tags)
+//        tags = try container.decode(String.self, forKey: .tags)
 //        isActive = try container.decode(Bool.self, forKey: .isActive)
-//        registered = try container.decode(String.self, forKey: .registered)
+//        registered = try container.decode(Date.self, forKey: .registered)
 //    }
 //}
 //

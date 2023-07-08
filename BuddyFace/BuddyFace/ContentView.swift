@@ -13,7 +13,6 @@ struct ContentView: View {
     @FetchRequest(sortDescriptors: []) var cachedUsers: FetchedResults<CachedUser>
     
     @State private var users = [User]()
-    @State private var switchView = false
     
     var body: some View {
         NavigationView {
@@ -62,7 +61,7 @@ struct ContentView: View {
         } catch {
             print("\(error.localizedDescription)")
         }
-        
+
         await MainActor.run {
             users.forEach { user in
                 let cachedUser = CachedUser(context: moc)
@@ -80,14 +79,14 @@ struct ContentView: View {
                     let cachedFriend = CachedFriend(context: moc)
                     cachedFriend.id = friend.id
                     cachedFriend.name = friend.name
-                    
+
                     cachedUser.addToFriends(cachedFriend)
                 }
             }
 
-//            if moc.hasChanges {
-//                try? moc.save()
-//            }
+            if moc.hasChanges {
+                try? moc.save()
+            }
         }
     }
 }

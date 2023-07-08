@@ -64,7 +64,7 @@ extension CachedUser {
         var combinedFriends = [String]()
         
         Array(friends as? Set<CachedFriend> ?? []).forEach { friend in
-            combinedFriends.append(friend.name!)
+            combinedFriends.append(friend.wrappedName)
         }
         
         return combinedFriends.joined(separator: ", ")
