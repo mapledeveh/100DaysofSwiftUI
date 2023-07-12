@@ -12,7 +12,8 @@ Yes, your job today is to expand your app so that it uses Core Data. Your boss j
 
 The end result will hopefully be the same as if I had given you the task all at once, but segmenting it in two like this hopefully makes it seem more within reach, while also giving you the chance to think about how well you structured your code to be adaptable as change requests come in.
 
-Important: please read!
+# Important: please read!
+
 This is a hard challenge. I’m going to give you some tips below, and some of you might think “tips? Ha! I don’t need tips, I can do this myself!” But please make an exception today: there is at least one new thing you need to learn to be able to tackle this challenge, and a few extra tips will save you hours of headaches.
 
 First, the new thing: when we fetch data from the internet we do so using an asynchronous function – we’re writing a function that can go to sleep while our download happens, then wake up and continue working.
