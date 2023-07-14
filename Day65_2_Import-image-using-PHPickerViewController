@@ -6,8 +6,6 @@
 //
 
 import SwiftUI
-import CoreImage.CIFilterBuiltins
-import CoreImage
 
 struct ContentView: View {
     @State private var image: Image?
@@ -15,9 +13,6 @@ struct ContentView: View {
     
     @State private var showingImagePicker = false
     @State private var inputImage: UIImage?
-    
-    @State private var currentFilter = CIFilter.sepiaTone()
-    let context = CIContext()
     
     var body: some View {
         NavigationView {
@@ -42,7 +37,6 @@ struct ContentView: View {
                 HStack {
                     Text("Intensity")
                     Slider(value: $filterIntensity)
-                        .onChange(of: filterIntensity) { _ in applyChanges() }
                 }
                 .padding(.horizontal)
                 
@@ -67,21 +61,7 @@ struct ContentView: View {
     
     func loadImage() {
         guard let inputImage = inputImage else { return }
-        
-        let beginImage = CIImage(image: inputImage)
-        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-        applyChanges()
-    }
-    
-    func applyChanges() {
-        currentFilter.intensity = Float(filterIntensity)
-        
-        guard let outputImage = currentFilter.outputImage else { return }
-        
-        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-            let uiImage = UIImage(cgImage: cgimg)
-            image = Image(uiImage: uiImage)
-        }
+        image = Image(uiImage: inputImage)
     }
     
     func save() {

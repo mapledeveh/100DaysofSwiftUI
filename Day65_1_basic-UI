@@ -6,18 +6,10 @@
 //
 
 import SwiftUI
-import CoreImage.CIFilterBuiltins
-import CoreImage
 
 struct ContentView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5
-    
-    @State private var showingImagePicker = false
-    @State private var inputImage: UIImage?
-    
-    @State private var currentFilter = CIFilter.sepiaTone()
-    let context = CIContext()
     
     var body: some View {
         NavigationView {
@@ -25,7 +17,6 @@ struct ContentView: View {
                 ZStack {
                     Rectangle()
                         .fill(.secondary)
-//                        .fill(inputImage != nil ? .white : .secondary)
                     
                     Text("Tap to select a picture")
                         .foregroundColor(.white)
@@ -36,13 +27,12 @@ struct ContentView: View {
                         .scaledToFit()
                 }
                 .onTapGesture {
-                    showingImagePicker = true
+                    // something here
                 }
                 
                 HStack {
                     Text("Intensity")
                     Slider(value: $filterIntensity)
-                        .onChange(of: filterIntensity) { _ in applyChanges() }
                 }
                 .padding(.horizontal)
                 
@@ -58,29 +48,6 @@ struct ContentView: View {
             }
             .padding([.horizontal, .bottom])
             .navigationTitle("InstaFilter")
-            .onChange(of: inputImage) { _ in loadImage() }
-            .sheet(isPresented: $showingImagePicker) {
-                ImagePicker(image: $inputImage)
-            }
-        }
-    }
-    
-    func loadImage() {
-        guard let inputImage = inputImage else { return }
-        
-        let beginImage = CIImage(image: inputImage)
-        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
-        applyChanges()
-    }
-    
-    func applyChanges() {
-        currentFilter.intensity = Float(filterIntensity)
-        
-        guard let outputImage = currentFilter.outputImage else { return }
-        
-        if let cgimg = context.createCGImage(outputImage, from: outputImage.extent) {
-            let uiImage = UIImage(cgImage: cgimg)
-            image = Image(uiImage: uiImage)
         }
     }
     

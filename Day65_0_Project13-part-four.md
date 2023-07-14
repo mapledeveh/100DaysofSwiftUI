@@ -1,6 +1,6 @@
 # <center> Project 13, part 4
 
-Today we’re going to be putting into practice some of the techniques you just learned, including how to create custom bindings, how to wrap PHPickerViewController for use inside SwiftUI, and how to apply Core Filter effects to an image.
+Today we’re going to be putting into practice some of the techniques you just learned, including how to create custom bindings, how to wrap **PHPickerViewController** for use inside SwiftUI, and how to apply Core Filter effects to an image.
 
 One thing I hope you notice is how I frequently lead you back to a topic we looked at previously. This isn’t an accident: as the self-help author Napoleon Hill wrote, “any idea, plan, or purpose may be placed in the mind through repetition of thought” – this repetition is one of several approaches I use to help you internalize how all this code fits together.
 
