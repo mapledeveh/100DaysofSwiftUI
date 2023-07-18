@@ -1,0 +1,60 @@
+//
+//  ContentView.swift
+//  BucketList
+//
+//  Created by Alex Nguyen on 2023-07-16.
+//
+
+import SwiftUI
+import MapKit
+
+struct Location: Identifiable {
+    let id = UUID()
+    let name: String
+    let coordinate: CLLocationCoordinate2D
+}
+
+struct ContentView: View {
+    @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 43.65, longitude: -79.38), span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2))
+    
+    let locations = [
+        Location(name: "CN Tower", coordinate: CLLocationCoordinate2D(latitude: 43.6428, longitude: -79.3871)),
+        Location(name: "Casa Loma", coordinate: CLLocationCoordinate2D(latitude: 43.6780, longitude: -79.4094))
+    ]
+        
+    var body: some View {
+        NavigationView {
+            Map(coordinateRegion: $mapRegion, annotationItems: locations) { location in
+                //            MapMarker(coordinate: location.coordinate)
+                MapAnnotation(coordinate: location.coordinate) {
+                    NavigationLink {
+                        Text(location.name)
+                    } label: {
+                        Image(systemName: "mappin.and.ellipse")
+                            .foregroundColor(.red)
+                            .font(.largeTitle)
+                    }
+                    
+                    //                VStack {
+                    //                    Circle()
+                    //                        .stroke(.red, lineWidth: 3)
+                    //                        .frame(width: 44, height: 44)
+                    //                        .onTapGesture {
+                    //                            print("Tapped on \(location.name) circle.")
+                    //                        }
+                    //
+                    //                    Text(location.name)
+                    //                }
+                }
+            }
+            .edgesIgnoringSafeArea(.bottom)
+            .navigationTitle("Toronto Explorer")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
