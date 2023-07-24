@@ -1,4 +1,35 @@
 //
+//  Location.swift
+//  BucketList
+//
+//  Created by Alex Nguyen on 2023-07-20.
+//
+
+import Foundation
+import CoreLocation
+
+struct Location: Identifiable, Codable, Equatable {
+    let id: UUID
+    var name: String
+    var description: String
+    let latitude: Double
+    let longitude: Double
+    
+    var coordinate: CLLocationCoordinate2D {
+        CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+    }
+    
+    static let example = Location(id: UUID(), name: "CN Tower", description: "The tallest tower in Canada", latitude: 43.38, longitude: -79.23)
+    
+    static func ==(lhs: Location, rhs: Location) -> Bool {
+        lhs.id == rhs.id
+    }
+}
+
+
+
+
+//
 //  ContentView.swift
 //  BucketList
 //
@@ -11,8 +42,6 @@ import MapKit
 struct ContentView: View {
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 55, longitude: -85), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
     @State private var locations = [Location]()
-    
-    @State private var selectedPlace: Location?
         
     var body: some View { 
         ZStack {
@@ -28,10 +57,6 @@ struct ContentView: View {
                             .clipShape(Circle())
                         
                         Text(location.name)
-                            .fixedSize()
-                    }
-                    .onTapGesture {
-                        selectedPlace = location
                     }
                 }
             }
@@ -63,13 +88,6 @@ struct ContentView: View {
                 }
             }
         }
-        .sheet(item: $selectedPlace) { place in
-            EditView(location: place) { newLocation in
-                if let index = locations.firstIndex(of: place) {
-                    locations[index] = newLocation
-                }
-            }
-        }
     }
 }
 
@@ -78,3 +96,8 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+
+
+
+
+
