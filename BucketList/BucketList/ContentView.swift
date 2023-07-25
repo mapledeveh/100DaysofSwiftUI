@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct ContentView: View {
+    
     @State private var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 55, longitude: -85), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
     @State private var locations = [Location]()
     

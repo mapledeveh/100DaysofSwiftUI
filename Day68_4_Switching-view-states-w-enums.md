@@ -5,6 +5,7 @@ if Bool.random() {
 } else {
     Circle()
 }
+
 Tip: When returning different kinds of view, make sure you’re either inside the body property or using something like @ViewBuilder or Group.
 
 Where conditional views are particularly useful is when we want to show one of several different states, and if we plan it correctly we can keep our view code small and also easy to maintain – it’s a great way to start training your brain to think about SwiftUI architecture.

@@ -1,4 +1,29 @@
 //
+//  Result.swift
+//  BucketList
+//
+//  Created by Alex Nguyen on 2023-07-25.
+//
+
+import Foundation
+
+struct Result: Codable {
+    let query: Query
+}
+
+struct Query: Codable {
+    let pages: [Int: Page]
+}
+
+struct Page: Codable {
+    let pageid: Int
+    let title: String
+    let terms: [String: [String]]?
+}
+
+
+
+//
 //  EditView.swift
 //  BucketList
 //
@@ -39,7 +64,7 @@ struct EditView: View {
                             Text(page.title)
                                 .font(.headline)
                             + Text(": ")
-                            + Text(page.description)
+                            + Text("Page description here")
                         }
                     case .failed:
                         Text("Please try again later.")
@@ -83,7 +108,7 @@ struct EditView: View {
             do {
                 let (data, _) = try await URLSession.shared.data(from: url)
                 let items = try JSONDecoder().decode(Result.self, from: data)
-                pages = items.query.pages.values.sorted()
+                pages = items.query.pages.values.sorted { $0.title < $1.title }
                 loadingState = .loaded
             } catch {
                 loadingState = .failed
@@ -96,3 +121,6 @@ struct EditView_Previews: PreviewProvider {
         EditView(location: Location.example) { _ in }
     }
 }
+
+
+
