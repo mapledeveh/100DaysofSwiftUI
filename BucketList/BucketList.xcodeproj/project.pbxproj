@@ -15,6 +15,7 @@
 		FA4288C62A648AFC002F6C6C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA4288C52A648AFC002F6C6C /* Preview Assets.xcassets */; };
 		FA84F3092A71BFE2000EF0BC /* ContentView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84F3082A71BFE2000EF0BC /* ContentView-ViewModel.swift */; };
 		FA84F30B2A71C653000EF0BC /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA84F30A2A71C653000EF0BC /* FileManager-DocumentsDirectory.swift */; };
+		FAA90C172A722131002E9ED1 /* EditView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAA90C162A722131002E9ED1 /* EditView-ViewModel.swift */; };
 		FAF572912A6F8B6D00694F4F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAF572902A6F8B6D00694F4F /* Result.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +29,7 @@
 		FA4288C52A648AFC002F6C6C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		FA84F3082A71BFE2000EF0BC /* ContentView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ContentView-ViewModel.swift"; sourceTree = "<group>"; };
 		FA84F30A2A71C653000EF0BC /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
+		FAA90C162A722131002E9ED1 /* EditView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditView-ViewModel.swift"; sourceTree = "<group>"; };
 		FAF572902A6F8B6D00694F4F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +47,6 @@
 		FA4288B22A648AFB002F6C6C = {
 			isa = PBXGroup;
 			children = (
-				FA84F30A2A71C653000EF0BC /* FileManager-DocumentsDirectory.swift */,
 				FA4288BD2A648AFB002F6C6C /* BucketList */,
 				FA4288BC2A648AFB002F6C6C /* Products */,
 			);
@@ -67,6 +68,8 @@
 				FA84F3082A71BFE2000EF0BC /* ContentView-ViewModel.swift */,
 				FAF572902A6F8B6D00694F4F /* Result.swift */,
 				FA1772262A6E35BE00654B3E /* EditView.swift */,
+				FAA90C162A722131002E9ED1 /* EditView-ViewModel.swift */,
+				FA84F30A2A71C653000EF0BC /* FileManager-DocumentsDirectory.swift */,
 				FA1626F52A6A1C6B005F6FE6 /* Location.swift */,
 				FA4288C22A648AFC002F6C6C /* Assets.xcassets */,
 				FA4288C42A648AFC002F6C6C /* Preview Content */,
@@ -157,6 +160,7 @@
 				FA84F3092A71BFE2000EF0BC /* ContentView-ViewModel.swift in Sources */,
 				FAF572912A6F8B6D00694F4F /* Result.swift in Sources */,
 				FA1626F62A6A1C6B005F6FE6 /* Location.swift in Sources */,
+				FAA90C172A722131002E9ED1 /* EditView-ViewModel.swift in Sources */,
 				FA1772272A6E35BE00654B3E /* EditView.swift in Sources */,
 				FA4288BF2A648AFB002F6C6C /* BucketListApp.swift in Sources */,
 			);

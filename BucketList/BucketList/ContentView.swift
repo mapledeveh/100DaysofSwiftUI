@@ -50,13 +50,13 @@ struct ContentView: View {
                             viewModel.addLocation()
                         } label: {
                             Image(systemName: "plus")
+                                .padding()
+                                .background(.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.trailing)
                         }
-                        .padding()
-                        .background(.black.opacity(0.75))
-                        .foregroundColor(.white)
-                        .font(.title)
-                        .clipShape(Circle())
-                        .padding(.trailing)
                     }
                 }
             }
@@ -66,13 +66,20 @@ struct ContentView: View {
                 }
             }
         } else {
-            Button("Unlock") {
+            Button {
                 viewModel.authenticate()
+            } label: {
+                Text("Unlock")
+                    .padding()
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
             }
-            .padding()
-            .background(.blue)
-            .foregroundColor(.white)
-            .clipShape(Capsule())
+            .alert("Unlock Failed", isPresented: $viewModel.unlockFailed) {
+                Button("OK") {}
+            } message: {
+                Text("Try again later.")
+            }
         }
     }
 }
