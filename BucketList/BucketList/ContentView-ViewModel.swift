@@ -18,6 +18,7 @@ extension ContentView {
         
         @Published var isUnlocked = false
         @Published var unlockFailed = false
+        @Published var unlockFailedMessage = ""
         
         let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
         
@@ -71,6 +72,7 @@ extension ContentView {
                     } else {
                         Task { @MainActor in
                             self.unlockFailed = true
+                            unlockFailedMessage =bbbbbbbnnnnnmmmm,,,hhhhhh213333qwesx253ew1q authenticationError?.localizedDescription
                         }
                     }
                 }
