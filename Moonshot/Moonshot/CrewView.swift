@@ -45,6 +45,7 @@ struct CrewView: View {
                             }
                             .padding(.horizontal)
                         }
+                        .accessibilityRemoveTraits(.isButton)
                     }
                 }
             }

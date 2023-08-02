@@ -56,10 +56,42 @@
             filePath = "Moonshot/GridLayoutView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "previews"
             landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "D2FD56C2-BE82-43CE-8908-A1077C4962AA - 3620a103df6632f3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Moonshot.GridLayoutView_Previews.previews.getter : some"
+                  moduleName = "Moonshot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/PaulHudsonCourse/Moonshot/Moonshot/GridLayoutView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "260">
+               </Location>
+               <Location
+                  uuid = "D2FD56C2-BE82-43CE-8908-A1077C4962AA - 3620a103df663312"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static Moonshot.GridLayoutView_Previews.previews.getter : some"
+                  moduleName = "Moonshot"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alex/Desktop/PaulHudsonCourse/Moonshot/Moonshot/GridLayoutView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "64"
+                  endingLineNumber = "64"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

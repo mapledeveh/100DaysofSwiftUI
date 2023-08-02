@@ -45,6 +45,7 @@ struct MissionView: View {
                             Image(systemName: "moonphase.new.moon")
                         }
                         .imageScale(.small)
+                        .accessibilityHidden(true)
                     }
                     .padding()
                     
@@ -77,6 +78,7 @@ struct MissionView: View {
                             Image(systemName: "moonphase.full.moon")
                         }
                         .imageScale(.small)
+                        .accessibilityHidden(true)
                     }
                     .padding()
                     

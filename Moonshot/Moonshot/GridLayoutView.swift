@@ -48,6 +48,7 @@ struct GridLayoutView: View {
                                 .stroke(.lightBackground)
                         )
                     }
+                    .accessibilityRemoveTraits(.isButton)
                 }
             }
             .padding([.horizontal, .bottom])
