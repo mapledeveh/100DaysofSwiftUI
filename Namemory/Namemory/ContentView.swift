@@ -12,7 +12,7 @@ struct ContentView: View {
     @StateObject var contactBook = ContactBook()
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             List {
                 ForEach(contactBook.people) { person in
                     NavigationLink {
@@ -34,6 +34,7 @@ struct ContentView: View {
                 .onDelete(perform: contactBook.removeContacts)
             }
             .navigationTitle("People")
+            .navigationBarTitleDisplayMode(.automatic)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()

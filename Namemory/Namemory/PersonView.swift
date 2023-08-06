@@ -21,6 +21,7 @@ struct PersonView: View {
             
             Spacer()
         }
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
