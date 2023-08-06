@@ -1,0 +1,35 @@
+//
+//  ContentView.swift
+//  GuessTheFlag
+//
+//  Created by Alex Nguyen on 2023-05-02.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var showingAlert = false
+    
+    var body: some View {
+        Button("Show me that alert!") {
+            showingAlert = true
+        }
+        .alert("Viruses Detected", isPresented: $showingAlert) {
+            Button("OK", role: .destructive) { }
+            Button("Cancel", role: .cancel) { } // seems optional if additional functions are needed because a cancel button is added by default
+        } message: {
+            Text("Your phone has been affected!")
+        }
+        .ignoresSafeArea()
+    }
+    
+    func executeDeleting() {
+        print("Doesn't do anything actually.")
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

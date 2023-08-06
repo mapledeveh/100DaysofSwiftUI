@@ -1,0 +1,78 @@
+//
+//  ContentView.swift
+//  GuessTheFlag
+//
+//  Created by Alex Nguyen on 2023-05-02.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        VStack {
+            Spacer()
+            
+            Button {
+                print("another text to print")
+            } label: {
+                Label("Fix me", systemImage: "house")
+            }
+            
+            Spacer()
+            HStack {
+                Button {
+                    print("Some text to print")
+                } label: {
+                    Image(systemName: "gear")
+                        .renderingMode(.original) // removes the blue colour and shows original colour(s)
+                }
+                
+                Image(systemName: "pencil")
+                //            Image(decorative: "pencil") // load the same image but won’t read it out for users who have enabled the screen reader. This is useful for images that don’t convey additional important information.
+                //            Image("pencil")
+            }
+            HStack {
+                VStack {
+                    Button("Button 1") { }
+                        .buttonStyle(.bordered)
+                    Button("Button 2", role: .destructive) { }
+                        .buttonStyle(.bordered)
+                    Button("Button 3") { }
+                        .buttonStyle(.borderedProminent)
+                    Button("Button 4", role: .destructive) { }
+                        .buttonStyle(.borderedProminent)
+                    Button("Button 5") { }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.mint)
+                }
+                Button {
+                    print("Button tapped!")
+                } label: {
+                    Text("Touch me!")
+                        .padding(30)
+                        .foregroundColor(.white)
+                        .background(.green)
+                }
+            }
+            Button("Delete", role: .destructive, action: executeDeleting)
+            Button("Delete down", action: executeDeleting)
+
+            Button("Delete here") {
+                print("Nah, just kidding!")
+            }
+            
+            Spacer()
+        }
+        .ignoresSafeArea()
+    }
+    
+    func executeDeleting() {
+        print("Doesn't do anything actually.")
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

@@ -1,0 +1,35 @@
+//
+//  ContentView.swift
+//  iExpense
+//
+//  Created by Alex Nguyen on 2023-05-19.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    
+//1    @State private var currentNumber = UserDefaults.standard.integer(forKey: "Tap")
+//2    @AppStorage("currentNumber") private var currentNumber = 0
+    @AppStorage("currentNumber") private var currentNumber = 0
+//3    @AppStorage("Tap") private var currentNumber = 0
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                Text("\(currentNumber)")
+                Button("Increase") {
+                    currentNumber += 1
+//1                    UserDefaults.standard.set(currentNumber, forKey: "Tap")
+                }
+                .buttonStyle(.borderedProminent)
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

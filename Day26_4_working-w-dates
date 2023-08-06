@@ -1,0 +1,51 @@
+//
+//  ContentView.swift
+//  BetterRest
+//
+//  Created by Alex Nguyen on 2023-05-07.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var sleepHours = 8.0
+    @State private var wakeUp = Date.now
+    
+    func exampleRange() {
+//        let now = Date.now
+//        let tomorrow = Date.now.addingTimeInterval(86400)
+//        let range = now...tomorrow
+        /*
+        var components = DateComponents()
+        components.hour = 8
+        components.minute = 0
+        let date = Calendar.current.date(from: components) ?? Date.now
+         */
+        let components = Calendar.current.dateComponents([.hour, .minute], from: Date.now)
+        let hour = components.hour
+        let minute = components.minute
+    }
+    
+    var body: some View {
+        VStack {
+            Stepper("\(sleepHours.formatted())", value: $sleepHours, in: 4...12, step: 0.25)
+            
+            DatePicker("Pick a time", selection: $wakeUp)
+            DatePicker("Pick a time from now", selection: $wakeUp, in: Date.now...)
+            DatePicker("Pick a date", selection: $wakeUp, displayedComponents: .date)
+            DatePicker("Pick an hour", selection: $wakeUp, displayedComponents: .hourAndMinute)
+            
+            Text(Date.now, format: .dateTime.hour().minute())
+            Text(Date.now, format: .dateTime.day().month().year())
+            Text(Date.now.formatted(date: .long, time: .shortened))
+            Text(Date.now.formatted(date: .long, time: .omitted))
+        }
+        .padding()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

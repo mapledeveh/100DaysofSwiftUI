@@ -1,0 +1,61 @@
+//
+//  ContentView.swift
+//  WordScramble
+//
+//  Created by Alex Nguyen on 2023-05-09.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    
+    let folks = [ "Michael", "Zach", "Matt", "Lauren" ]
+    var body: some View {
+        /*
+        List {
+            Text("Static row 1")
+            
+            ForEach(0..<5) {
+                Text("Dynamic row \($0)")
+            }
+            
+            Text("Static row 2")
+            
+            Section {
+                Text("Static row 3")
+                Text("Static row 4")
+            }
+        }
+        */
+        /*
+        List(0..<5) {
+            Text("Grouped row 1")
+            
+            Text("Dynamic row \($0)")
+            
+            Text("Grouped row 2")
+        }
+         */
+        /*
+        List(folks, id: \.self) {
+            Text($0)
+        }
+         */
+        List {
+            Text("Grouped row 1")
+            
+            ForEach(folks, id: \.self) {
+                Text($0)
+            }
+            
+            Text("Grouped row 2")
+        }
+        .listStyle(.grouped)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

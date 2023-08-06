@@ -1,0 +1,339 @@
+//
+//  ContentView.swift
+//  CupcakeCorner
+//
+//  Created by Alex Nguyen on 2023-06-15.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @StateObject var checkout = Checkout()
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    Picker("Select your cake type", selection: $checkout.order.type) {
+                        ForEach(Items.types.indices) {
+                            Text(Items.types[$0])
+                        }
+                    }
+                    
+                    Stepper("Number of cakes: \(checkout.order.quantity)", value: $checkout.order.quantity, in: 3...20)
+                }
+                
+                Section {
+                    Toggle("Any special requests?", isOn: $checkout.order.specialRequestEnabled.animation())
+                    
+                    if checkout.order.specialRequestEnabled {
+                        Toggle("Add extra frosting", isOn: $checkout.order.extraFrosting)
+                        Toggle("Add extra sprkinkles", isOn: $checkout.order.addSprinkles)
+                    }
+                }
+                
+                Section {
+                    NavigationLink {
+                        AddressView(checkout: checkout)
+                    } label: {
+                        Text("Deliver details")
+                    }
+                }
+            }
+            .navigationTitle("Cupcake Corner")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+
+
+
+
+
+
+//
+//  AddressView.swift
+//  CupcakeCorner
+//
+//  Created by Alex Nguyen on 2023-06-26.
+//
+
+import SwiftUI
+
+struct AddressView: View {
+    @ObservedObject var checkout: Checkout
+    var body: some View {
+        Form {
+            Section {
+                TextField("Name", text: $checkout.order.name)
+                TextField("Address", text: $checkout.order.streetAddress)
+                TextField("City", text: $checkout.order.city)
+                TextField("Postal Code", text: $checkout.order.postalCode)
+            }
+            
+            Section {
+                NavigationLink {
+                    CheckoutView(checkout: checkout)
+                } label: {
+                    Text("Check out")
+                }
+            }
+            .disabled(checkout.order.hasValidAddress == false)
+        }
+        .navigationTitle("Delivery details")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct AddressView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            AddressView(checkout: Checkout())
+        }
+    }
+}
+
+
+
+
+
+//
+//  Order.swift
+//  CupcakeCorner
+//
+//  Created by Alex Nguyen on 2023-06-26.
+//
+
+import SwiftUI
+
+//class Order: ObservableObject, Codable {
+//    enum CodingKeys: CodingKey {
+//        case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, postalCode
+//    }
+//
+//
+//    static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
+//
+//    @Published var type = 0
+//    @Published var quantity = 3
+//
+//    @Published var specialRequestEnabled = false {
+//        didSet {
+//            if specialRequestEnabled == false {
+//                extraFrosting = false
+//                addSprinkles = false
+//            }
+//        }
+//    }
+//    @Published var extraFrosting = false
+//    @Published var addSprinkles = false
+//
+//    @Published var name = ""
+//    @Published var streetAddress = ""
+//    @Published var city = ""
+//    @Published var postalCode = ""
+//
+//    var hasValidAddress: Bool {
+//        if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || streetAddress.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || city.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || postalCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+//            return false
+//        }
+//
+//        return true
+//    }
+//
+//    var cost: Double {
+//        // $2 per cake
+//        var cost = Double(quantity) * 2
+//
+//        // complicated cakes cost more
+//        cost += (Double(type) / 2)
+//
+//        // $1/cake for extra frosting
+//        if extraFrosting {
+//            cost += Double(quantity)
+//        }
+//
+//        // $0.50 per cake for sprinkles
+//        if addSprinkles {
+//            cost += Double(quantity) / 2
+//        }
+//
+//        return cost
+//    }
+//
+//    init() { }
+//
+//    func encode(to encoder: Encoder) throws {
+//        var container = encoder.container(keyedBy: CodingKeys.self)
+//
+//        try container.encode(type, forKey: .type)
+//        try container.encode(quantity, forKey: .quantity)
+//        try container.encode(extraFrosting, forKey: .extraFrosting)
+//        try container.encode(addSprinkles, forKey: .addSprinkles)
+//        try container.encode(name, forKey: .name)
+//        try container.encode(streetAddress, forKey: .streetAddress)
+//        try container.encode(city, forKey: .city)
+//        try container.encode(postalCode, forKey: .postalCode)
+//    }
+//
+//    required init(from decoder: Decoder) throws {
+//        let container = try decoder.container(keyedBy: CodingKeys.self)
+//
+//        type = try container.decode(Int.self, forKey: .type)
+//        quantity = try container.decode(Int.self, forKey: .quantity)
+//
+//        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
+//        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
+//
+//        name = try container.decode(String.self, forKey: .name)
+//        streetAddress = try container.decode(String.self, forKey: .streetAddress)
+//        city = try container.decode(String.self, forKey: .city)
+//        postalCode = try container.decode(String.self, forKey: .postalCode)
+//    }
+//}
+
+class Checkout: ObservableObject {
+    @Published var order = Items()
+}
+
+struct Items: Codable {
+    
+    static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
+    
+    var type = 0
+    var quantity = 3
+    
+    var specialRequestEnabled = false {
+        didSet {
+            if specialRequestEnabled == false {
+                extraFrosting = false
+                addSprinkles = false
+            }
+        }
+    }
+    var extraFrosting = false
+    var addSprinkles = false
+    
+    var name = ""
+    var streetAddress = ""
+    var city = ""
+    var postalCode = ""
+    
+    var hasValidAddress: Bool {
+        if name.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || streetAddress.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || city.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty || postalCode.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            return false
+        }
+        
+        return true
+    }
+    
+    var cost: Double {
+        // $2 per cake
+        var cost = Double(quantity) * 2
+        
+        // complicated cakes cost more
+        cost += (Double(type) / 2)
+        
+        // $1/cake for extra frosting
+        if extraFrosting {
+            cost += Double(quantity)
+        }
+        
+        // $0.50 per cake for sprinkles
+        if addSprinkles {
+            cost += Double(quantity) / 2
+        }
+        
+        return cost
+    }
+}
+
+
+
+
+
+//
+//  CheckoutView.swift
+//  CupcakeCorner
+//
+//  Created by Alex Nguyen on 2023-06-26.
+//
+
+import SwiftUI
+
+struct CheckoutView: View {
+    @ObservedObject var checkout = Checkout()
+    @State private var showingConfirmation = false
+    @State private var showingError = false
+    @State private var confirmationMessage = ""
+    
+    var body: some View {
+        ScrollView {
+            VStack {
+                AsyncImage(url: URL(string: "https://raw.githubusercontent.com/alxvngn/100DaysSwiftUI/4259cd0c285a0eb413b84bf9684488ccda1b7045/CupcakeCorner/cupcakes%403x.png"), scale: 3) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(height: 233)
+                
+                Text("Your total is \(checkout.order.cost, format: .currency(code: "CAD"))")
+                    .font(.title)
+                
+                Button("Place Order") {
+                    Task {
+                        await placeOrder()
+                    }
+                }
+                    .buttonStyle(.borderedProminent)
+            }
+        }
+        .navigationBarTitle("Checkout")
+        .navigationBarTitleDisplayMode(.inline)
+        .alert(showingError ? "Checkout Error" : "Thank you!", isPresented: $showingConfirmation) {
+            Button("OK") { }
+        } message: {
+            Text(confirmationMessage)
+        }
+    }
+    
+    func placeOrder() async {
+        guard let encoded = try? JSONEncoder().encode(checkout.order) else {
+            print("Failed to encode order")
+            return
+        }
+        
+        let url = URL(string: "https://reqres.in/api/cupcakes")!
+        var request = URLRequest(url: url)
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        
+        do {
+            let (data, _) = try await URLSession.shared.upload(for: request, from: encoded)
+            
+            let decodedOrder = try JSONDecoder().decode(Items.self, from: data)
+            confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Items.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
+            showingConfirmation = true
+        } catch {
+            print("Checkout failed.")
+            confirmationMessage = "An unexpected error has occured."
+            showingConfirmation = true
+            showingError = true
+        }
+    }
+}
+
+struct CheckoutView_Previews: PreviewProvider {
+    static var previews: some View {
+        CheckoutView(checkout: Checkout())
+    }
+}

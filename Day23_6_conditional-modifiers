@@ -1,0 +1,31 @@
+//
+//  ContentView.swift
+//  ViewsAndModifiers
+//
+//  Created by Alex Nguyen on 2023-05-04.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var destructiveButton = true
+    
+    var body: some View {
+        ZStack {
+            Color(destructiveButton ? .white : .red) // just for fun here. not a modifier
+                .ignoresSafeArea()
+            
+            Button("Change Background") {
+                destructiveButton.toggle()
+            }
+            .foregroundColor(destructiveButton ? .red : .white) // THIS is the real modifier
+            .buttonStyle(.bordered)
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

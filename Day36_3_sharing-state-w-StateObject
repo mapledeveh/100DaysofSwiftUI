@@ -1,0 +1,37 @@
+//
+//  ContentView.swift
+//  iExpense
+//
+//  Created by Alex Nguyen on 2023-05-19.
+//
+
+import SwiftUI
+
+class User: ObservableObject {
+    @Published var firstName = "Mason"
+    @Published var lastName = "Kane"
+}
+
+struct ContentView: View {
+    
+    @StateObject var user = User()
+    
+    var body: some View {
+        VStack {
+            Image(systemName: "smiley")
+                .imageScale(.large)
+                .foregroundColor(.accentColor)
+            Text("His name is \(user.firstName) \(user.lastName)")
+            
+            TextField("First Name", text: $user.firstName)
+            TextField("Last Name", text: $user.lastName)
+        }
+        .padding()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

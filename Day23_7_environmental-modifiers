@@ -1,0 +1,31 @@
+//
+//  ContentView.swift
+//  ViewsAndModifiers
+//
+//  Created by Alex Nguyen on 2023-05-04.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var destructiveButton = true
+    
+    var body: some View {
+        VStack {
+            Text("Hello")
+                .font(.largeTitle) // because it's a environmental modifier, ithis takes precedence over its parent's modifier
+//                .blur(radius: 0) // non-environmental modifiers can't override the parent's modifiers. they add up more to it.
+            Text("Bonjour")
+            Text("Hola")
+            Text("Hej")
+        }
+        .font(.subheadline) // this applies to every view inside the vstack, is called an environmental modifier
+//        .blur(radius: 5) // this is not an environmental modifier
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

@@ -1,0 +1,25 @@
+//
+//  ContentView.swift
+//  GuessTheFlag
+//
+//  Created by Alex Nguyen on 2023-05-02.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        AngularGradient(gradient: Gradient(colors: [.red, .green, .yellow, .blue, .purple, .red]), center: .center)
+//        RadialGradient(gradient: Gradient(colors: [.yellow, .red, .green]), center: .center, startRadius: 20, endRadius: 200)
+//        LinearGradient(gradient: Gradient(stops: [.init(color: .red, location: 0.4), .init(color: .green, location: 0.6)]), startPoint: .top, endPoint: .bottom)
+//        LinearGradient(gradient: Gradient(stops: [Gradient.Stop(color: .red, location: 0.4), Gradient.Stop(color: .green, location: 0.6)]), startPoint: .top, endPoint: .bottom)
+//        LinearGradient(gradient: Gradient(colors: [.white, .black]), startPoint: .top, endPoint: .bottom)
+        .ignoresSafeArea()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

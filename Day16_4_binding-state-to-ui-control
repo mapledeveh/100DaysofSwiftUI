@@ -1,0 +1,26 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Alex Nguyen on 2023-04-27.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var storedText = String()
+    
+    var body: some View {
+        Form {
+            TextField("Enter your name here", text: $storedText)
+            Text("Hello, \(storedText)!")
+        }
+        
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

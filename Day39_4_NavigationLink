@@ -1,0 +1,29 @@
+//
+//  ContentView.swift
+//  Moonshot
+//
+//  Created by Alex Nguyen on 2023-05-22.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            List(0..<100) { row in
+                NavigationLink {
+                    Text("Detail, \(row)!")
+                } label: {
+                    Text("Link \(row)")
+                }
+            }
+            .navigationTitle("SwiftUI")
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

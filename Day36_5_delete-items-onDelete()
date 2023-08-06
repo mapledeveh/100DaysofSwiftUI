@@ -1,0 +1,46 @@
+//
+//  ContentView.swift
+//  iExpense
+//
+//  Created by Alex Nguyen on 2023-05-19.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    
+    @State private var numbers = [Int]()
+    @State private var currentNumber = 1
+    
+    func deleteRow(at offsets: IndexSet) {
+        numbers.remove(atOffsets: offsets)
+    }
+    
+    var body: some View {
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(numbers, id: \.self) {
+                        Text("Row \($0)")
+                    }
+                    .onDelete(perform: deleteRow)
+                }
+                Button("Jay said") {
+                    numbers.append(currentNumber)
+                    currentNumber += 1
+                }
+                .buttonStyle(.borderedProminent)
+            }
+            .navigationTitle("onDelete()")
+            .toolbar {
+                EditButton()
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

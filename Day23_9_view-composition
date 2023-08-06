@@ -1,0 +1,49 @@
+//
+//  ContentView.swift
+//  ViewsAndModifiers
+//
+//  Created by Alex Nguyen on 2023-05-04.
+//
+
+import SwiftUI
+
+struct DaenerysTargaryen: View {
+    var text: String
+    var bgColour: Color = .red
+    
+    var body: some View {
+        Text(text)
+            .font(.largeTitle)
+            .padding()
+            .foregroundColor(.white)
+            .background(bgColour)
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+    }
+}
+
+struct ContentView: View {
+    
+    var body: some View {
+        VStack(spacing: 15) {
+            DaenerysTargaryen(text: "Mother of Dragons", bgColour: .gray)
+            
+            DaenerysTargaryen(text: "The Unburnt")
+            
+            DaenerysTargaryen(text: "Breaker of Chains", bgColour: .green)
+                .clipShape(Capsule())
+            
+            Text("Breaker of Chains")
+                .font(.largeTitle)
+                .padding()
+                .foregroundColor(.white)
+                .background(.green)
+                .clipShape(Capsule())
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}

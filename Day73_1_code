@@ -1,0 +1,311 @@
+//
+//  EditView-ViewModel.swift
+//  BucketList
+//
+//  Created by Alex Nguyen on 2023-07-26.
+//
+
+import SwiftUI
+
+extension EditView {
+    @MainActor class EditViewModel: ObservableObject {
+        enum LoadingState {
+            case loading, loaded, failed
+        }
+        
+        init(location: Location) {
+            self.location = location
+            
+//            name = location.name
+//            description = location.description
+            
+            _name = Published(initialValue: location.name)
+            _description = Published(initialValue: location.description)
+        }
+        
+        @Published var location: Location
+        
+        @Published var name: String
+        @Published var description: String
+        
+        @Published var loadingState = LoadingState.loading
+        @Published var pages = [Page]()        
+        
+        func fetchNearbyPlaces() async {
+            let urlString = "https://en.wikipedia.org/w/api.php?ggscoord=\(location.coordinate.latitude)%7C\(location.coordinate.longitude)&action=query&prop=coordinates%7Cpageimages%7Cpageterms&colimit=50&piprop=thumbnail&pithumbsize=500&pilimit=50&wbptterms=description&generator=geosearch&ggsradius=10000&ggslimit=50&format=json"
+            
+            guard let url = URL(string: urlString) else {
+                print("Bad URL: \(urlString)")
+                return
+            }
+            
+            do {
+                let (data, _) = try await URLSession.shared.data(from: url)
+                let items = try JSONDecoder().decode(Result.self, from: data)
+                pages = items.query.pages.values.sorted()
+                loadingState = .loaded
+            } catch {
+                loadingState = .failed
+            }
+        }
+        
+        func saveNewLocation() -> Location {
+            var newLocation = location
+            newLocation.id = UUID()
+            newLocation.name = name
+            newLocation.description = description
+            
+            return newLocation
+        }
+    }
+}
+
+
+
+
+
+//
+//  EditView.swift
+//  BucketList
+//
+//  Created by Alex Nguyen on 2023-07-24.
+//
+
+import SwiftUI
+
+struct EditView: View {
+    @Environment(\.dismiss) var dismiss
+    var onSave: (Location) -> Void
+        
+    @StateObject var viewModel: EditViewModel
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                Section {
+                    TextField("Place name", text: $viewModel.name)
+                    TextField("Description", text: $viewModel.description)
+                }
+                
+                Section("Nearby...") {
+                    switch viewModel.loadingState {
+                    case .loading:
+                        Text("Loading")
+                    case .loaded:
+                        ForEach(viewModel.pages, id: \.pageid) { page in
+                            Text(page.title)
+                                .font(.headline)
+                            + Text(": ")
+                            + Text(page.description)
+                        }
+                    case .failed:
+                        Text("Please try again later.")
+                    }
+                }
+            }
+            .navigationTitle("Place Details")
+            .toolbar {
+                Button("Save") {
+                    onSave(viewModel.saveNewLocation())
+                    dismiss()
+                }
+            }
+            .task {
+                await viewModel.fetchNearbyPlaces()
+            }
+        }
+    }
+    
+    init(location: Location, onSave: @escaping (Location) -> Void) {
+        _viewModel = StateObject(wrappedValue: EditViewModel(location: location))
+        self.onSave = onSave
+    }
+}
+
+struct EditView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditView(location: Location.example) { _ in }
+    }
+}
+
+
+
+
+//
+//  ContentView.swift
+//  BucketList
+//
+//  Created by Alex Nguyen on 2023-07-16.
+//
+
+import SwiftUI
+import MapKit
+
+struct ContentView: View {
+    @StateObject var viewModel = ViewModel()
+    
+    var body: some View {
+        if viewModel.isUnlocked {
+            ZStack {
+                Map(coordinateRegion: $viewModel.mapRegion, annotationItems: viewModel.locations) { location in
+                    MapAnnotation(coordinate: location.coordinate) {
+                        
+                        VStack {
+                            Image(systemName: "star.circle")
+                                .resizable()
+                                .foregroundColor(.red)
+                                .frame(width: 44, height: 44)
+                                .background(.white)
+                                .clipShape(Circle())
+                            
+                            Text(location.name)
+                                .fixedSize()
+                        }
+                        .onTapGesture {
+                            viewModel.selectedPlace = location
+                        }
+                    }
+                }
+                .ignoresSafeArea()
+                
+                Circle()
+                    .fill(.blue)
+                    .opacity(0.3)
+                    .frame(width: 32, height: 32)
+                
+                VStack {
+                    Spacer()
+                    
+                    HStack {
+                        Spacer()
+                        
+                        Button {
+                            viewModel.addLocation()
+                        } label: {
+                            Image(systemName: "plus")
+                                .padding()
+                                .background(.black.opacity(0.75))
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .clipShape(Circle())
+                                .padding(.trailing)
+                        }
+                    }
+                }
+            }
+            .sheet(item: $viewModel.selectedPlace) { place in
+                EditView(location: place) { newLocation in
+                    viewModel.update(location: newLocation)
+                }
+            }
+        } else {
+            Button {
+                viewModel.authenticate()
+            } label: {
+                Text("Unlock")
+                    .padding()
+                    .background(.blue)
+                    .foregroundColor(.white)
+                    .clipShape(Capsule())
+            }
+            .alert("Unlock Failed", isPresented: $viewModel.unlockFailed) {
+                Button("OK") {}
+            } message: {
+                Text("Try again later.")
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+
+
+
+//
+//  ContentView-ViewModel.swift
+//  BucketList
+//
+//  Created by Alex Nguyen on 2023-07-26.
+//
+
+import Foundation
+import LocalAuthentication
+import MapKit
+
+extension ContentView {
+    @MainActor class ViewModel: ObservableObject {
+        @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 55, longitude: -85), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
+        @Published private(set) var locations: [Location]
+        
+        @Published var selectedPlace: Location?
+        
+        @Published var isUnlocked = false
+        @Published var unlockFailed = false
+        
+        let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
+        
+        init() {
+            do {
+                let data = try Data(contentsOf: savePath)
+                locations = try JSONDecoder().decode([Location].self, from: data)
+            } catch {
+                locations = []
+            }
+        }
+        
+        func save() {
+            do {
+                let data = try JSONEncoder().encode(locations)
+                try data.write(to: savePath, options: [.atomic, .completeFileProtection])
+            } catch {
+                print("Unable to save data.")
+            }
+        }
+        
+        func addLocation() {
+            let newLocation = Location(id: UUID(), name: "New Location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
+            locations.append(newLocation)
+            save()
+        }
+        
+        func update(location: Location) {
+            guard let selectedPlace = selectedPlace else { return }
+            
+            if let index = locations.firstIndex(of: selectedPlace) {
+                locations[index] = location
+                save()
+            }
+        }
+        
+        func authenticate() {
+            let context = LAContext()
+            var error: NSError?
+            
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                let reason = "Please authenticate yourself to unlock data."
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                    if success {
+                        Task { @MainActor in
+//                            await MainActor.run {
+//                            }
+                            self.isUnlocked = true
+                        }
+                    } else {
+                        Task { @MainActor in
+                            self.unlockFailed = true
+                        }
+                    }
+                }
+            } else {
+                // no biometrics
+            }
+        }
+    }
+}

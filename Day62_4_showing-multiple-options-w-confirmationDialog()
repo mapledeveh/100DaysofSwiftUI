@@ -1,0 +1,39 @@
+//
+//  ContentView.swift
+//  InstaFilter
+//
+//  Created by Alex Nguyen on 2023-07-10.
+//
+
+import SwiftUI
+
+struct ContentView: View {
+    @State private var showingConfirmation = false
+    @State private var backgroundColour = Color.white
+    
+    var body: some View {
+        VStack {
+            Text("Hello, world!")
+                .frame(width: 300, height: 300)
+                .background(backgroundColour)
+                .onTapGesture {
+                       showingConfirmation = true
+                }
+                .confirmationDialog("Choose a Colour", isPresented: $showingConfirmation) {
+                    Button("Blue") { backgroundColour = .blue }
+                    Button("Red") { backgroundColour = .red }
+                    Button("Yellow") { backgroundColour = .yellow }
+                    Button("Cancel", role: .cancel) { }
+                } message: {
+                    Text("Change Background Colour")
+                }
+        }
+        .padding()
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
