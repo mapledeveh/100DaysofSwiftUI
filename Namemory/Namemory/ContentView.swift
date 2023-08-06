@@ -10,28 +10,43 @@ import SwiftUI
 struct ContentView: View {
     @State private var showingAddPerson = false
     @StateObject var contactBook = ContactBook()
-    @State private var person = [Person]()
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             List {
                 ForEach(contactBook.people) { person in
-                    HStack {
-                        person.image
-                            .resizable()
-                            .scaledToFit()
-                        
-                        Text(person.name)
-                    }
+                    NavigationLink {
+                        PersonView(person: person)
+                    } label: {
+                        HStack {
+                            // contact photos taken by the Camera app will have 3:4 ratio by default
+                            Image(uiImage: person.image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 75, height: 100)
+                                .clipped()
+                            
+                            Text(person.name)
+                                .font(.headline)
+                        }
+                    }                    
                 }
+                .onDelete(perform: contactBook.removeContacts)
             }
             .navigationTitle("People")
             .toolbar {
-                Button {
-                    showingAddPerson = true
-                } label: {
-                    Image(systemName: "plus")
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
                 }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingAddPerson = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+                
             }
             .sheet(isPresented: $showingAddPerson) {
                 AddPersonView(contactBook: contactBook)

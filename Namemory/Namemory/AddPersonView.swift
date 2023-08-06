@@ -26,23 +26,28 @@ struct AddPersonView: View {
                             .foregroundColor(.white)
                             .font(.headline)
                         
-                        if let photoImage = viewModel.photoImage {
-                            photoImage
+                        if let uiImage = viewModel.uiPhoto {
+                            Image(uiImage: uiImage)
                                 .resizable()
-                                .scaledToFit()
-//                                .frame(width: 300, height: 300)
+                                .scaledToFill()
                         }
                     }
                 }
                 .frame(width: 300, height: 400)
+                .clipped()
                 
                 Form {
                     TextField("Name", text: $viewModel.name)
                 }
-                .disabled(viewModel.photoImage == nil)
+                .disabled(viewModel.uiPhoto == nil)
             }
             .padding()
             .navigationTitle("Add Person")
+            .alert("Error", isPresented: $viewModel.showingAlert) {
+                Button("OK") { }
+            } message: {
+                Text(viewModel.alertMessage)
+            }
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel", role: .cancel) {
@@ -52,10 +57,15 @@ struct AddPersonView: View {
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        contactBook.people.append(Person(id: UUID(), name: viewModel.name, image: viewModel.photoImage ?? Image(systemName: "person")))
-                        
-                        dismiss()
+                        if viewModel.name.trimmingCharacters(in: .whitespacesAndNewlines) != "" && viewModel.uiPhoto != nil {
+                            contactBook.people.append(Person(id: UUID(), name: viewModel.name, image: viewModel.uiPhoto!))
+                            
+                            dismiss()
+                        } else {
+                            viewModel.showingAlert = true
+                        }
                     }
+                    .disabled(viewModel.name.isEmpty || viewModel.uiPhoto == nil)
                 }
             }
             .onChange(of: viewModel.photoItem) { _ in

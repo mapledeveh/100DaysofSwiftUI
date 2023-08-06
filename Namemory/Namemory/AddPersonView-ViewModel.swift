@@ -18,8 +18,12 @@ extension FileManager {
 extension AddPersonView {
     @MainActor class ViewModel: ObservableObject {
         @Published var photoItem: PhotosPickerItem?
-        @Published var photoImage: Image?
+//        @Published var photoImage: Image?
+        @Published var uiPhoto: UIImage?
         @Published var name: String
+        
+        @Published var showingAlert = false
+        @Published var alertMessage = "Photo and Name must not be empty!"
         
         init() {
             self.name = ""
@@ -28,25 +32,12 @@ extension AddPersonView {
         func loadImage() async {
             if let data = try? await photoItem?.loadTransferable(type: Data.self) {
                 if let uiImage = UIImage(data: data) {
-//                    if let jpegData = uiImage.jpegData(compressionQuality: 0.8) {
-//                        try? jpegData.write(to: FileManager.documentsDirectory.appendingPathComponent("ProfilePicture"), options: [.atomic, .completeFileProtection])
-//                    }
-                    photoImage = Image(uiImage: uiImage)
+                    uiPhoto = uiImage
                     return
                 }
             }
             
-//            print("Failed")
-        }
-        
-        func savePhoto() async {
-            if let data = try? await photoItem?.loadTransferable(type: Data.self) {
-                if let uiImage = UIImage(data: data) {
-                    if let jpegData = uiImage.jpegData(compressionQuality: 0.8) {
-                        try? jpegData.write(to: FileManager.documentsDirectory.appendingPathComponent("ProfilePicture"), options: [.atomic, .completeFileProtection])
-                    }
-                }
-            }
+            print("Failed")
         }
     }
 }

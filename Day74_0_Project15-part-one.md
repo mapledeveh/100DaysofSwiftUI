@@ -1,6 +1,6 @@
 # <center> Project 15, part 1
 
-We have a new technique project today, this time focusing on something you might not even have considered: accessibility. This is a measure of how well our app can be used by people with varying access needs – they might need larger text, they might need us to avoid certain colors to help them see things clearly, they might need our UI to be read out, and so on.
+e have a new technique project today, this time focusing on something you might not even have considered: accessibility. This is a measure of how well our app can be used by people with varying access needs – they might need larger text, they might need us to avoid certain colors to help them see things clearly, they might need our UI to be read out, and so on.
 
 Too many developers completely ignore the importance of accessibility, which results in apps that are completely opaque to large numbers of people. Tony Fadell – the creator of the iPod at Apple – had this to say: “you are defined by what you do and also by what you don’t do.”
 
