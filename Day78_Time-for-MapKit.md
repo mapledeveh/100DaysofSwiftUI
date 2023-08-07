@@ -55,5 +55,5 @@ If you’re using the simulator rather than a real device, you can fake a locati
 
 And now it’s over to you: can you add the feature your boss wants, and bring MapKit, UIKit, and SwiftUI together in a single app?
 
-**Tip:** If you want to make your app really useful, try setting the **sourceType** property of your image picker controller to **.camera** so that it lets user take new photos rather than import existing ones.
+**Tip:** If you want to make your app *really* useful, try setting the **sourceType** property of your image picker controller to **.camera** so that it lets user take new photos rather than import existing ones.
 
