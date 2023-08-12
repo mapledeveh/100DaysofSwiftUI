@@ -1,3 +1,6 @@
-# 100DaysSwiftUI
+# 100 Days of SwiftUI
+> Thanks, Paul.
 
-Thanks, Paul.
+## Next Objective
+- Move all projects to their own repository. Moved projects:
+  - Namemory
