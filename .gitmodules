@@ -7,3 +7,6 @@
 [submodule "Bookworm"]
 	path = Bookworm
 	url = git@github.com:mapledeveh/Bookworm.git
+[submodule "WordScramble"]
+	path = WordScramble
+	url = git@github.com:mapledeveh/WordScramble.git
