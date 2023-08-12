@@ -1,0 +1,3 @@
+[submodule "Namemory"]
+	path = Namemory
+	url = git@github.com:mapledeveh/Namemory.git
