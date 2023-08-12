@@ -4,3 +4,6 @@
 [submodule "BetterRest"]
 	path = BetterRest
 	url = git@github.com:mapledeveh/BetterRest.git
+[submodule "Bookworm"]
+	path = Bookworm
+	url = git@github.com:mapledeveh/Bookworm.git
