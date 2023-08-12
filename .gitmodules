@@ -1,3 +1,6 @@
 [submodule "Namemory"]
 	path = Namemory
 	url = git@github.com:mapledeveh/Namemory.git
+[submodule "BetterRest"]
+	path = BetterRest
+	url = git@github.com:mapledeveh/BetterRest.git
