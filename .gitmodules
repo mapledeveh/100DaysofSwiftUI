@@ -49,3 +49,6 @@
 [submodule "BuddyFace"]
 	path = BuddyFace
 	url = git@github.com:mapledeveh/BuddyFace.git
+[submodule "Habitab"]
+	path = Habitab
+	url = git@github.com:mapledeveh/Habitab.git

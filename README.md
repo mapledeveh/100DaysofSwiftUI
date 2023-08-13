@@ -20,3 +20,4 @@
   - [WeSplit](https://github.com/mapledeveh/WeSplit)
   - [AccessibilitySandbox](https://github.com/mapledeveh/AccessibilitySandbox)
   - [BuddyFace](https://github.com/mapledeveh/BuddyFace)
+  - [Habitab](https://github.com/mapledeveh/Habitab)
