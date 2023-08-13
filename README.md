@@ -24,3 +24,4 @@
   - [xDrills](https://github.com/mapledeveh/xDrills)
   - [UnitConverter](https://github.com/mapledeveh/UnitConverter)
   - [HotProspects](https://github.com/mapledeveh/HotProspects)
+  - [RockPaperScissors](https://github.com/mapledeveh/RockPaperScissors)

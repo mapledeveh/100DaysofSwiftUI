@@ -61,3 +61,6 @@
 [submodule "HotProspects"]
 	path = HotProspects
 	url = git@github.com:mapledeveh/HotProspects.git
+[submodule "RockPaperScissors"]
+	path = RockPaperScissors
+	url = git@github.com:mapledeveh/RockPaperScissors.git
