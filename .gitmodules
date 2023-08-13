@@ -13,3 +13,6 @@
 [submodule "BucketList"]
 	path = BucketList
 	url = git@github.com:mapledeveh/BucketList.git
+[submodule "CupcakeCorner"]
+	path = CupcakeCorner
+	url = git@github.com:mapledeveh/CupcakeCorner.git
