@@ -17,3 +17,4 @@
   - [Drawing](https://github.com/mapledeveh/Drawing)
   - [GuessTheFlag](https://github.com/mapledeveh/GuessTheFlag)
   - [ViewsAndModifiers](https://github.com/mapledeveh/ViewsAndModifiers)
+  - [WeSplit](https://github.com/mapledeveh/WeSplit)

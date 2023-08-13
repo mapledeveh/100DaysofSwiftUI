@@ -40,3 +40,6 @@
 [submodule "ViewsAndModifiers"]
 	path = ViewsAndModifiers
 	url = git@github.com:mapledeveh/ViewsAndModifiers.git
+[submodule "WeSplit"]
+	path = WeSplit
+	url = git@github.com:mapledeveh/WeSplit.git
