@@ -41,7 +41,7 @@ Now for the interesting part: making the QR code itself. If you remember, workin
 
 1. Our input for the filter will be a string, but the input for the filter is **Data**, so we need to convert that.
 2. If conversion fails for any reason we’ll send back the “xmark.circle” image from SF Symbols.
-3. If that can’t be read – which is theoretically possible because SF Symbols is stringly typed – then we’ll send back an empty **UIImage**.
+3. If *that* can’t be read – which is theoretically possible because SF Symbols is stringly typed – then we’ll send back an empty **UIImage**.
 
 So, add this method to the **MeView** struct now:
 ```
