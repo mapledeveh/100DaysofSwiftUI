@@ -52,3 +52,6 @@
 [submodule "Habitab"]
 	path = Habitab
 	url = git@github.com:mapledeveh/Habitab.git
+[submodule "xDrills"]
+	path = xDrills
+	url = git@github.com:mapledeveh/xDrills.git
