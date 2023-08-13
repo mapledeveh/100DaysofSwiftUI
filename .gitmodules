@@ -46,3 +46,6 @@
 [submodule "AccessibilitySandbox"]
 	path = AccessibilitySandbox
 	url = git@github.com:mapledeveh/AccessibilitySandbox.git
+[submodule "BuddyFace"]
+	path = BuddyFace
+	url = git@github.com:mapledeveh/BuddyFace.git
