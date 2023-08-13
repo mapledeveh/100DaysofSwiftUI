@@ -19,3 +19,6 @@
 [submodule "iExpense"]
 	path = iExpense
 	url = git@github.com:mapledeveh/iExpense.git
+[submodule "CoreDataProject"]
+	path = CoreDataProject
+	url = git@github.com:mapledeveh/CoreDataProject.git
