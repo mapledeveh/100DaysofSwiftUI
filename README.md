@@ -1,8 +1,8 @@
 # 100 Days of SwiftUI
 > Thanks, Paul.
 
-## Next Objective
-- Move all projects to their own repository. Moved projects:
+## Finished Objective
+- Move all projects to their own repository. All projects moved:
   - [Namemory](https://github.com/mapledeveh/Namemory)
   - [BetterRest](https://github.com/mapledeveh/BetterRest)
   - [Bookworm](https://github.com/mapledeveh/Bookworm)

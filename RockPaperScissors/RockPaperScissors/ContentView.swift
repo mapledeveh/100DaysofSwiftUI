@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Day25Challenge
+//  RockPaperScissors
 //
 //  Created by Alex Nguyen on 2023-05-06.
 //
