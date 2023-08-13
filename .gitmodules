@@ -31,3 +31,6 @@
 [submodule "Animations"]
 	path = Animations
 	url = git@github.com:mapledeveh/Animations.git
+[submodule "Drawing"]
+	path = Drawing
+	url = git@github.com:mapledeveh/Drawing.git
