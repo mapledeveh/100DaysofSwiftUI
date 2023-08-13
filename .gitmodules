@@ -58,3 +58,6 @@
 [submodule "UnitConverter"]
 	path = UnitConverter
 	url = git@github.com:mapledeveh/UnitConverter.git
+[submodule "HotProspects"]
+	path = HotProspects
+	url = git@github.com:mapledeveh/HotProspects.git

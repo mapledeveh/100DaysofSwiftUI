@@ -26,3 +26,4 @@
   - [HotProspects](https://github.com/mapledeveh/HotProspects)
 
   - [UnitConverter](https://github.com/mapledeveh/UnitConverter)
+  - [HotProspects](https://github.com/mapledeveh/HotProspects)
