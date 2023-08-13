@@ -13,3 +13,4 @@
   - [CoreDataProject](https://github.com/mapledeveh/CoreDataProject)
   - [InstaFilter](https://github.com/mapledeveh/InstaFilter)
   - [Moonshot](https://github.com/mapledeveh/Moonshot)
+  - [Animations](https://github.com/mapledeveh/Animations)

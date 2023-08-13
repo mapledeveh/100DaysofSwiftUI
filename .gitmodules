@@ -28,3 +28,6 @@
 [submodule "Moonshot"]
 	path = Moonshot
 	url = git@github.com:mapledeveh/Moonshot.git
+[submodule "Animations"]
+	path = Animations
+	url = git@github.com:mapledeveh/Animations.git
