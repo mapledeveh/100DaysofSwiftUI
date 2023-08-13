@@ -37,3 +37,6 @@
 [submodule "GuessTheFlag"]
 	path = GuessTheFlag
 	url = git@github.com:mapledeveh/GuessTheFlag.git
+[submodule "ViewsAndModifiers"]
+	path = ViewsAndModifiers
+	url = git@github.com:mapledeveh/ViewsAndModifiers.git
