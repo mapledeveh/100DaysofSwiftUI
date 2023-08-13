@@ -43,3 +43,6 @@
 [submodule "WeSplit"]
 	path = WeSplit
 	url = git@github.com:mapledeveh/WeSplit.git
+[submodule "AccessibilitySandbox"]
+	path = AccessibilitySandbox
+	url = git@github.com:mapledeveh/AccessibilitySandbox.git
