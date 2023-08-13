@@ -16,3 +16,6 @@
 [submodule "CupcakeCorner"]
 	path = CupcakeCorner
 	url = git@github.com:mapledeveh/CupcakeCorner.git
+[submodule "iExpense"]
+	path = iExpense
+	url = git@github.com:mapledeveh/iExpense.git
