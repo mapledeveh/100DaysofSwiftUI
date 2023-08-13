@@ -22,3 +22,6 @@
 [submodule "CoreDataProject"]
 	path = CoreDataProject
 	url = git@github.com:mapledeveh/CoreDataProject.git
+[submodule "InstaFilter"]
+	path = InstaFilter
+	url = git@github.com:mapledeveh/InstaFilter.git
