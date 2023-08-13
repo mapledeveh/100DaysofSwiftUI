@@ -34,3 +34,6 @@
 [submodule "Drawing"]
 	path = Drawing
 	url = git@github.com:mapledeveh/Drawing.git
+[submodule "GuessTheFlag"]
+	path = GuessTheFlag
+	url = git@github.com:mapledeveh/GuessTheFlag.git
