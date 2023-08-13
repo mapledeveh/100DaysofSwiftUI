@@ -10,3 +10,6 @@
 [submodule "WordScramble"]
 	path = WordScramble
 	url = git@github.com:mapledeveh/WordScramble.git
+[submodule "BucketLast"]
+	path = BucketLast
+	url = git@github.com:mapledeveh/BucketList.git
