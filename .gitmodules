@@ -25,3 +25,6 @@
 [submodule "InstaFilter"]
 	path = InstaFilter
 	url = git@github.com:mapledeveh/InstaFilter.git
+[submodule "Moonshot"]
+	path = Moonshot
+	url = git@github.com:mapledeveh/Moonshot.git
