@@ -55,3 +55,6 @@
 [submodule "xDrills"]
 	path = xDrills
 	url = git@github.com:mapledeveh/xDrills.git
+[submodule "UnitConverter"]
+	path = UnitConverter
+	url = git@github.com:mapledeveh/UnitConverter.git
