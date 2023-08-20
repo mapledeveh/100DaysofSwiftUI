@@ -2,7 +2,10 @@
 > Thanks, Paul.
 
 ## Finished Objective
-- Move all projects to their own repository. All projects moved:
+- Move all projects to their own repository. All projects moved.
+
+## Projects
+- Projects that are on their own repository:
   - [Namemory](https://github.com/mapledeveh/Namemory)
   - [BetterRest](https://github.com/mapledeveh/BetterRest)
   - [Bookworm](https://github.com/mapledeveh/Bookworm)
@@ -25,3 +28,4 @@
   - [UnitConverter](https://github.com/mapledeveh/UnitConverter)
   - [HotProspects](https://github.com/mapledeveh/HotProspects)
   - [RockPaperScissors](https://github.com/mapledeveh/RockPaperScissors)
+  - [Flashzilla](https://github.com/mapledeveh/Flashzilla

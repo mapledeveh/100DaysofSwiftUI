@@ -64,3 +64,6 @@
 [submodule "RockPaperScissors"]
 	path = RockPaperScissors
 	url = git@github.com:mapledeveh/RockPaperScissors.git
+[submodule "Flashzilla"]
+	path = Flashzilla
+	url = git@github.com:mapledeveh/Flashzilla.git
