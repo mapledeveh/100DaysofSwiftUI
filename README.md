@@ -28,4 +28,4 @@
   - [UnitConverter](https://github.com/mapledeveh/UnitConverter)
   - [HotProspects](https://github.com/mapledeveh/HotProspects)
   - [RockPaperScissors](https://github.com/mapledeveh/RockPaperScissors)
-  - [Flashzilla](https://github.com/mapledeveh/Flashzilla
+  - [Flashzilla](https://github.com/mapledeveh/Flashzilla)
