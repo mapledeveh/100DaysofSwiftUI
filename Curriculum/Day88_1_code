@@ -1,0 +1,53 @@
+//
+//  CardView.swift
+//  Flashzilla
+//
+//  Created by Alex Nguyen on 2023-08-21.
+//
+
+import SwiftUI
+
+struct CardView: View {
+    let card: Card
+    @State private var isShowingAnswer = false
+    @State private var degree = 0.0
+    
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.yellow)
+                .shadow(radius: 10)
+//                .rotation3DEffect(.degrees(degree), axis: (x: 0, y: 1, z: 0))
+//                .animation(.interpolatingSpring(stiffness: 50, damping: 10), value: degree)
+            
+            VStack {
+                if isShowingAnswer {
+                    Text(card.answer)
+                        .foregroundColor(.gray)
+                        .font(.title)
+                } else {
+                    Text(card.prompt)
+                        .foregroundColor(.black)
+                    .font(.largeTitle)
+                }
+            }
+            .padding()
+            .multilineTextAlignment(.center)
+//            .rotation3DEffect(.degrees(degree), axis: (x: 0, y: 1, z: 0))
+//            .animation(.interpolatingSpring(stiffness: 50, damping: 10), value: degree)
+        }
+        .frame(width: 450, height: 250)
+        .onTapGesture {
+            isShowingAnswer.toggle()
+            withAnimation {
+                degree += 180.0
+            }
+        }
+    }
+}
+
+struct CardView_Previews: PreviewProvider {
+    static var previews: some View {
+        CardView(card: Card.example)
+    }
+}

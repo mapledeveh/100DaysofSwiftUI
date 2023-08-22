@@ -6,13 +6,7 @@ As I’ve said previously, animation is about both making your app look great an
 
 Also, don’t forget what it looks like to be playful in your user interface. My all-time #1 favorite iOS animation is one that Apple ditched when they moved to iOS 7, and it was the animation for deleting passes in the Wallet app – a metal shredder appeared and cut your pass into a dozen strips that then dropped away. It only took a fraction of a second more than the current animation, but it was beautiful and fun too!
 
-Review what you learned
-Anyone can sit through a tutorial, but it takes actual work to remember what was taught. It’s my job to make sure you take as much from these tutorials as possible, so I’ve prepared a short review to help you check your learning.
-
-Click here to review what you learned in this project.
-
-Challenge
-One of the best ways to learn is to write your own code as often as possible, so here are three ways you should try extending this app to make sure you fully understand what’s going on.
+# Challenge
 
 Go back to the Guess the Flag project and add some animation:
 
