@@ -67,3 +67,6 @@
 [submodule "Flashzilla"]
 	path = Flashzilla
 	url = git@github.com:mapledeveh/Flashzilla.git
+[submodule "LayoutAndGeometry"]
+	path = LayoutAndGeometry
+	url = git@github.com:mapledeveh/LayoutAndGeometry.git
